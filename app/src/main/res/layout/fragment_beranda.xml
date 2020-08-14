@@ -150,6 +150,8 @@
 
                     <com.rishabhharit.roundedimageview.RoundedImageView
                         android:layout_width="60dp"
+                        android:scaleType="center"
+                        android:src="@drawable/ic_completed_icon"
                         android:layout_height="60dp"
                         android:background="@android:color/white"
                         app:cornerRadius="60dp" />

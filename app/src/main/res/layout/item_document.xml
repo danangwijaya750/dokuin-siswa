@@ -3,17 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="248dp"
     android:layout_height="78dp"
-    app:cardCornerRadius="10dp"
-    app:cardElevation="5dp"
     android:layout_gravity="center"
-    android:layout_margin="5dp">
+    android:layout_margin="5dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="5dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingStart="20dp"
-        android:paddingEnd="20dp"
         android:paddingTop="5dp"
+        android:paddingEnd="20dp"
         android:paddingBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent">
 
@@ -22,10 +22,10 @@
             android:id="@+id/iv_doc_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:src="@drawable/ic_doc_icon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_doc_icon" />
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView
@@ -38,12 +38,8 @@
             android:text="name_document.pdf"
             android:textSize="15sp"
             app:layout_constraintBottom_toTopOf="@+id/tv_doc_date"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/iv_doc_icon"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.727" />
-
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_doc_date"
@@ -52,8 +48,6 @@
             android:fontFamily="@font/font"
             android:text="tv_doc_date"
             android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/iv_doc_icon"
             app:layout_constraintStart_toStartOf="@+id/tv_doc_title"
             app:layout_constraintTop_toBottomOf="@+id/tv_doc_title" />
