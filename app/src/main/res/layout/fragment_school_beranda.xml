@@ -47,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="60dp"
-                android:text="@string/hai_ahsan_firdaus"
+                android:text="@string/hai_sma_n_1_jogja"
                 android:textColor="@android:color/white"
                 android:textSize="25sp"
                 android:textStyle="bold"
@@ -92,7 +92,7 @@
 
                 <LinearLayout
                     android:id="@+id/ll_waiting"
-                    android:layout_width="70dp"
+                    android:layout_width="63dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="5dp"
@@ -139,30 +139,6 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/ll_completed"
-                    android:layout_width="70dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="5dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <com.rishabhharit.roundedimageview.RoundedImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:background="@android:color/white"
-                        app:cornerRadius="60dp" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="@string/completed"
-                        android:textColor="@android:color/white" />
-                </LinearLayout>
-
-                <LinearLayout
                     android:id="@+id/ll_all"
                     android:layout_width="70dp"
                     android:layout_height="match_parent"
@@ -188,88 +164,15 @@
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <LinearLayout
-            android:id="@+id/ll_latest_up"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cl_header">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Latest "
-                android:textColor="@android:color/black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:text="Approved Documents" />
-        </LinearLayout>
-
         <TextView
             android:id="@+id/tv_latest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
-            android:text="See All"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cl_header" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_latest_approved"
-            android:layout_width="match_parent"
-            android:layout_height="110dp"
-            android:layout_margin="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ll_latest_up" />
-
-        <LinearLayout
-            android:id="@+id/ll_latest_bottom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
+            android:text=""
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rv_latest_approved">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Latest "
-                android:textColor="@android:color/black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:text="Waiting Documents" />
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
-            android:text="See All"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rv_latest_approved" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_latest_waiting"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ll_latest_bottom" />
+            app:layout_constraintTop_toBottomOf="@id/cl_header" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

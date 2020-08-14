@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">Dokuin</string>
+    <string name="sign_in">Sign In</string>
+    <string name="username_email_hint">Username/Email</string>
+    <string name="password_hint">Password</string>
+    <string name="don_t_have_account">Don\'t have account?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="cd_logo">logo</string>
+    <string name="already_have_account">Already have account?</string>
+    <string name="password_hint_conf">Confirm Password</string>
+    <string name="name_hint">Name</string>
+    <string name="email_hint">Email</string>
+    <string name="all_files">All Files</string>
+    <string name="draft">Draft</string>
+    <string name="hai_sma_n_1_jogja">Hai, SMA N 1 Jogja</string>
+    <string name="what_would_you_like_to_do">What would you like to do?</string>
+    <string name="search">Search</string>
+    <string name="waiting">Waiting</string>
+    <string name="completed">Completed</string>
+    <string name="hai_ahsan_firdaus">Hai, Ahsan Firdaus</string>
 </resources>

@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.instansi.InstansiMainActivity"></activity>
+        <activity android:name=".ui.instansi.InstansiMainActivity"/>
+        <activity android:name=".ui.school.SchoolMainActivity"/>
+        <activity android:name=".ui.login.SignUpActivity" />
         <activity android:name=".ui.main.MainActivity" />
         <activity android:name=".ui.login.LoginActivity" />
         <activity android:name=".ui.splash.SplashActivity">

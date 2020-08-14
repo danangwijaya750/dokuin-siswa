@@ -2,10 +2,10 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="248dp"
-    android:layout_height="78dp"
+    android:layout_width="379dp"
+    android:layout_height="91dp"
     app:cardCornerRadius="10dp"
-    app:cardElevation="5dp"
+    app:cardElevation="7dp"
     android:layout_gravity="center"
     android:layout_margin="5dp"
     >
@@ -35,7 +35,8 @@
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="137dp"
             android:fontFamily="@font/font"
             android:text="name_document.pdf"
             android:textSize="15sp"
@@ -47,11 +48,28 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.727" />
 
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="61dp"
+            android:layout_height="14dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="8dp"
+
+            android:background="@drawable/rounded_status_green"
+            android:gravity="center"
+            android:text="status"
+            android:textColor="@android:color/white"
+            android:textSize="6dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tv_doc_date"
+            app:layout_constraintTop_toBottomOf="@id/tv_doc_date" />
 
         <TextView
             android:id="@+id/tv_doc_date"
             android:layout_width="wrap_content"
             android:layout_height="16dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="225dp"
             android:fontFamily="@font/font"
             android:text="tv_doc_date"
             android:textFontWeight="100"
@@ -59,11 +77,22 @@
             app:layout_constraintBottom_toTopOf="@+id/textView2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/iv_preview_attachment"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.013"
             app:layout_constraintStart_toEndOf="@+id/iv_doc_icon"
             app:layout_constraintStart_toStartOf="@+id/tv_doc_title"
             app:layout_constraintTop_toBottomOf="@+id/tv_doc_title" />
 
+        <com.rishabhharit.roundedimageview.RoundedImageView
+            android:id="@+id/avatar"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:background="@android:color/darker_gray"
+            android:scaleType="center"
+            app:cornerRadius="34dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:roundedCorners="all" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
