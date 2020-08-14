@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="360dp"
     android:layout_height="155dp"
-    app:cardCornerRadius="10dp"
-    app:cardElevation="7dp"
     android:layout_gravity="center"
     android:layout_margin="5dp"
-    >
+    app:cardCornerRadius="10dp"
+    app:cardElevation="7dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -26,16 +24,12 @@
             android:layout_height="20dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
-            android:fontFamily="@font/font"
+            android:fontFamily="@font/roboto_light"
             android:text="name_document.pdf"
             android:textSize="15sp"
             app:layout_constraintBottom_toTopOf="@+id/tv_doc_date"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/iv_preview_attachment"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/avatar"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.727" />
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <Button
@@ -45,12 +39,11 @@
             android:background="@drawable/rounded_button"
             android:text="Review"
             android:textAllCaps="false"
-            android:textSize="12sp"
             android:textColor="@android:color/white"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tv_doc_title"
-            app:layout_constraintTop_toBottomOf="@+id/tv_name"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
         <TextView
             android:id="@+id/tv_doc_date"
@@ -58,12 +51,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/font"
             android:text="tv_doc_date"
-            android:textFontWeight="100"
             android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/textView2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/iv_preview_attachment"
-            app:layout_constraintHorizontal_bias="0.013"
             app:layout_constraintStart_toStartOf="@+id/tv_doc_title"
             app:layout_constraintTop_toBottomOf="@+id/tv_doc_title" />
 
@@ -72,14 +60,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:fontFamily="@font/font"
-            android:text="name"
-            android:textFontWeight="100"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Nama"
+            android:textStyle="bold"
             android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/textView2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/iv_preview_attachment"
-            app:layout_constraintHorizontal_bias="0.013"
             app:layout_constraintStart_toStartOf="@+id/tv_doc_title"
             app:layout_constraintTop_toBottomOf="@+id/tv_doc_title" />
 
