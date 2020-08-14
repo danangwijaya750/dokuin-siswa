@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "880130691787",
+    "firebase_url": "https://dokuin-uny.firebaseio.com",
+    "project_id": "dokuin-uny",
+    "storage_bucket": "dokuin-uny.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:880130691787:android:6c8e125d977adc3b89414e",
+        "android_client_info": {
+          "package_name": "id.infiniteuny.dokuin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "880130691787-7vpt32p2sp6001ajinmieeqr9dbd9h4k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.infiniteuny.dokuin",
+            "certificate_hash": "669036deec1450300b5c741a6db0884f763cb8ec"
+          }
+        },
+        {
+          "client_id": "880130691787-st3no0vs18s702tt96f7q029i64q2tgk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCG3Wm6EsbVED182e11IIvLWxn7pZOXm3w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "880130691787-st3no0vs18s702tt96f7q029i64q2tgk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
