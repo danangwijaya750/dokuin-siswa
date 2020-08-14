@@ -104,6 +104,8 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:background="@android:color/white"
+                        android:scaleType="center"
+                        android:src="@drawable/ic_waiting_icon"
                         app:cornerRadius="60dp" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -128,6 +130,8 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:background="@android:color/white"
+                        android:scaleType="center"
+                        android:src="@drawable/ic_draft_icon"
                         app:cornerRadius="60dp" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -152,6 +156,8 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:background="@android:color/white"
+                        android:scaleType="center"
+                        android:src="@drawable/ic_all_files"
                         app:cornerRadius="60dp" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -164,15 +170,83 @@
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/tv_latest"
+        <LinearLayout
+            android:id="@+id/ll_latest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
-            android:text=""
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_header">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Latest "
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:text="Documents" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:text="See All"
+            android:textColor="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cl_header" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_latest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/ll_latest" />
+
+        <LinearLayout
+            android:id="@+id/ll_latest_waiting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_latest">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Latest "
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:text="Waiting Documents" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:text="See All"
+            android:textColor="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_latest" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_latest_waiting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/ll_latest_waiting" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
