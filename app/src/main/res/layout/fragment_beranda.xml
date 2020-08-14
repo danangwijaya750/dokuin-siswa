@@ -103,7 +103,9 @@
                     <com.rishabhharit.roundedimageview.RoundedImageView
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:background="@android:color/white"
+                        android:background="@drawable/bg_circle"
+                        android:src="@drawable/ic_waiting_icon"
+                        android:scaleType="center"
                         app:cornerRadius="60dp" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -127,7 +129,9 @@
                     <com.rishabhharit.roundedimageview.RoundedImageView
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:background="@android:color/white"
+                        android:background="@drawable/bg_circle"
+                        android:src="@drawable/ic_draft_icon"
+                        android:scaleType="center"
                         app:cornerRadius="60dp" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -151,7 +155,7 @@
                     <com.rishabhharit.roundedimageview.RoundedImageView
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:background="@android:color/white"
+                        android:background="@drawable/bg_circle"
                         app:cornerRadius="60dp" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -176,6 +180,8 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:background="@android:color/white"
+                        android:src="@drawable/ic_all_files"
+                        android:scaleType="center"
                         app:cornerRadius="60dp" />
 
                     <androidx.appcompat.widget.AppCompatTextView

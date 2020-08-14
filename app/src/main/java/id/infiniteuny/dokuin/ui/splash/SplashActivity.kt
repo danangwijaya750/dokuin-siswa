@@ -15,6 +15,7 @@ class SplashActivity : BaseActivity(R.layout.activity_splash) {
     private var handler: Handler?=null
     override fun viewCreated(savedInstanceState: Bundle?) {
         handler=Handler()
+        doSplash()
     }
     private fun doSplash(){
         handler?.postDelayed({
@@ -22,7 +23,8 @@ class SplashActivity : BaseActivity(R.layout.activity_splash) {
                 true->MainActivity::class.java
                 else->LoginActivity::class.java
             }
-            startActivity(Intent(this,intent))
+            //startActivity(Intent(this,intent))
+            startActivity(Intent(this,MainActivity::class.java))
             finish()
         },1500)
     }

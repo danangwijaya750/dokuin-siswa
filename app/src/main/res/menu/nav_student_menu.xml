@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_beranda_student"
+        android:title="Beranda" />
+    <item
+        android:id="@+id/menu_upload_student"
+        android:title="Upload Document" />
+    <item
+        android:id="@+id/menu_notif_student"
+        android:title="Notifikasi" />
+</menu>
