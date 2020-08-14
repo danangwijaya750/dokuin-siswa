@@ -59,5 +59,7 @@ dependencies {
     // Shimmer
     implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
 
+    //imageview
+    implementation 'com.rishabhharit.roundedimageview:RoundedImageView:0.8.4'
 
 }
