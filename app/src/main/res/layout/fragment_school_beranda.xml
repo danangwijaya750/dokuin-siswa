@@ -47,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="60dp"
-                android:text="@string/hai_ahsan_firdaus"
+                android:text="@string/hai_sma_n_1_jogja"
                 android:textColor="@android:color/white"
                 android:textSize="25sp"
                 android:textStyle="bold"
@@ -92,7 +92,7 @@
 
                 <LinearLayout
                     android:id="@+id/ll_waiting"
-                    android:layout_width="70dp"
+                    android:layout_width="63dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="5dp"
@@ -135,30 +135,6 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="@string/draft"
-                        android:textColor="@android:color/white" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ll_completed"
-                    android:layout_width="70dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="5dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <com.rishabhharit.roundedimageview.RoundedImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:background="@android:color/white"
-                        app:cornerRadius="60dp" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="@string/completed"
                         android:textColor="@android:color/white" />
                 </LinearLayout>
 
