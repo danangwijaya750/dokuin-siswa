@@ -24,13 +24,14 @@ class LoginActivity : BaseActivity(R.layout.activity_login), AuthView {
         btn_sign_in.setOnClickListener {
             val email = et_sign_in_email.text.toString()
             val pass = et_sign_in_password.text.toString()
-            fAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
-                if (it.isSuccessful) {
-                    getUserRole(it.result?.user?.uid)
-                } else {
-                    toast("Incorrect email or password!")
+            if (email.isNotEmpty() && pass.isNotEmpty())
+                fAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        getUserRole(it.result?.user?.uid)
+                    } else {
+                        toast("Incorrect email or password!")
+                    }
                 }
-            }
         }
 
         btn_goto_sign_up.setOnClickListener {
@@ -44,9 +45,9 @@ class LoginActivity : BaseActivity(R.layout.activity_login), AuthView {
 
     override fun showUserDataResult(user: UserModel) {
         val pref = SharedPref(this)
-        pref.userEmail=user.email!!
-        pref.userName=user.name!!
-        pref.userRole=user.role!!
+        pref.userEmail = user.email!!
+        pref.userName = user.name!!
+        pref.userRole = user.role!!
         val intent: Class<out BaseActivity>
         user.role.let { role ->
             toastBottom(role.toString())
