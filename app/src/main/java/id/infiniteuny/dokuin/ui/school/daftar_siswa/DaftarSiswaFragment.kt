@@ -73,7 +73,16 @@ class DaftarSiswaFragment : BaseFragment(R.layout.fragment_daftar_siswa) {
         listStudent.add(
             StudentModel(
                 "kgRK8fcJ8pWRNRiIjXBp4KIC3cs2",
-                "Ahsan F",
+                "Danang Wijaya",
+                "Berbah, Sleman",
+                "5567543",
+                ""
+            )
+        )
+        listStudent.add(
+            StudentModel(
+                "kgRK8fcJ8pWRNRiIjXBp4KIC3cs2",
+                "Ahsan Firdaus",
                 "Godean, Sleman",
                 "1235522",
                 ""
@@ -82,7 +91,7 @@ class DaftarSiswaFragment : BaseFragment(R.layout.fragment_daftar_siswa) {
         listStudent.add(
             StudentModel(
                 "kgRK8fcJ8pWRNRiIjXBp4KIC3cs2",
-                "A Firdaus",
+                "Ananda Firdaus",
                 "Moyudan, Sleman",
                 "2231456",
                 ""
@@ -91,7 +100,7 @@ class DaftarSiswaFragment : BaseFragment(R.layout.fragment_daftar_siswa) {
         listStudent.add(
             StudentModel(
                 "kgRK8fcJ8pWRNRiIjXBp4KIC3cs2",
-                "Ricardo Ahsan",
+                "Ricardo Fereira",
                 "Karangmalang",
                 "5467321",
                 ""
@@ -105,7 +114,7 @@ class DaftarSiswaFragment : BaseFragment(R.layout.fragment_daftar_siswa) {
         listStudent.add(
             StudentModel(
                 "kgRK8fcJ8pWRNRiIjXBp4KIC3cs2",
-                "Danang W",
+                "Muhammad Adi",
                 "Berbah, Sleman",
                 "5567543",
                 ""

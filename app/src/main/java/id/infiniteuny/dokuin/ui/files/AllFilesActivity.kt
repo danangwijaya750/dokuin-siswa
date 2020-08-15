@@ -40,6 +40,9 @@ class AllFilesActivity : BaseActivity(R.layout.activity_all_files) {
             layoutManager=layMan
         }
         getPopulateData()
+        iv_back.setOnClickListener {
+            onBackPressed()
+        }
     }
 
     private fun getPopulateData(){
@@ -55,13 +58,9 @@ class AllFilesActivity : BaseActivity(R.layout.activity_all_files) {
     }
 
     private fun handleClick(data : DocumentModel){
-        if(SharedPref(this).userRole=="student"&&data.status=="waiting"){
-            toast("Your Document is under Review")
-        }else {
             val intent = Intent(this, DetailFileActivity::class.java)
             intent.putExtra("data", data)
             startActivity(intent)
-        }
     }
 
     private fun getStudentFiles(){
@@ -99,6 +98,11 @@ class AllFilesActivity : BaseActivity(R.layout.activity_all_files) {
                 logE(it.localizedMessage)
                 toast(it.localizedMessage)
             }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
     }
 
 

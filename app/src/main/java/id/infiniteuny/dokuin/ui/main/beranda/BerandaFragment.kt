@@ -17,6 +17,7 @@ import id.infiniteuny.dokuin.base.BaseFragment
 import id.infiniteuny.dokuin.base.RvAdapter
 import id.infiniteuny.dokuin.data.local.SharedPref
 import id.infiniteuny.dokuin.data.model.DocumentModel
+import id.infiniteuny.dokuin.ui.detail.DetailFileActivity
 import id.infiniteuny.dokuin.ui.files.AllFilesActivity
 import id.infiniteuny.dokuin.ui.login.LoginActivity
 import id.infiniteuny.dokuin.util.logE
@@ -34,7 +35,7 @@ class BerandaFragment : BaseFragment(R.layout.fragment_beranda), BerandaView {
 
     private val adapterLatestApproved = object : RvAdapter<DocumentModel>(latestDocumentApproved,
         {
-
+            handleClick(it)
         }) {
         override fun layoutId(position: Int, obj: DocumentModel): Int = R.layout.item_document
 
@@ -42,11 +43,16 @@ class BerandaFragment : BaseFragment(R.layout.fragment_beranda), BerandaView {
             LatestApprovedVH(view)
 
     }
+    private fun handleClick(data : DocumentModel){
+        val intent = Intent(context, DetailFileActivity::class.java)
+        intent.putExtra("data", data)
+        startActivity(intent)
+    }
     private val waitingDocList = mutableListOf<DocumentModel>()
 
     private val rvAdapter = object : RvAdapter<DocumentModel>(waitingDocList,
         {
-
+            handleClick(it)
         }) {
         override fun layoutId(position: Int, obj: DocumentModel): Int = R.layout.item_document_waiting_student
 

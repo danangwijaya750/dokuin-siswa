@@ -28,24 +28,27 @@ class DetailFileActivity : BaseActivity((R.layout.activity_detail_file)),DetailF
                 presenter.doVerify(data.title,data.id)
             }
         }
+        iv_back.setOnClickListener {
+            onBackPressed()
+        }
     }
 
     private fun showData(data:DocumentModel){
         tv_doc_title.text=data.title
-        var sles=when(SharedPref(this).userRole){
-            "school"->"document/unverif"
-            else->"document"
+        val sles = if(data.status=="approved"){
+            "document"
+        }else{
+            "document/unverif"
         }
-        if(data.status=="approved"){
-            sles="document"
-        }
-        val url= "${BASE_URL}${sles}?filename=${data.title}&key=${SharedPref(this).key}"
+        val base="http://bnpb.divistant.com:3000/"
+        val url= "${base}${sles}?filename=${data.title}&key=${SharedPref(this).key}"
         logE(url)
         val urls= "https://drive.google.com/viewerng/viewer?embedded=true&url=$url"
         //val doc= "<iframe src='http://docs.google.com/viewer?url=${url}&embedded=true'width='100%'height='100%'style='border: none;'></iframe>";
         wv_viewer.settings.javaScriptEnabled = true
         wv_viewer.settings.allowFileAccess = true
         wv_viewer.loadUrl(urls)
+        toast("Please reselect the document again if the pdf file is not showing")
     }
 
     override fun onStart() {
@@ -68,7 +71,10 @@ class DetailFileActivity : BaseActivity((R.layout.activity_detail_file)),DetailF
         toast(data.data!!.status)
     }
 
-
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+    }
 }
 
 

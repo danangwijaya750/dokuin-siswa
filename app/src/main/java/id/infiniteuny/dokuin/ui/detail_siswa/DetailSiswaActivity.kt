@@ -61,6 +61,9 @@ class DetailSiswaActivity : BaseActivity(R.layout.activity_detail_siswa) {
         floating_action_button.setOnClickListener {
             openUpload()
         }
+        iv_back.setOnClickListener {
+            onBackPressed()
+        }
     }
 
     private fun showData(data:StudentModel){
@@ -106,5 +109,10 @@ class DetailSiswaActivity : BaseActivity(R.layout.activity_detail_siswa) {
                 }
             }
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
     }
 }

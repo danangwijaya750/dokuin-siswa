@@ -47,7 +47,7 @@ val client:OkHttpClient by lazy {
         }
         .build()
 }
-public const val BASE_URL="https://8d8b0bd9944b.ngrok.io/"
+public const val BASE_URL="http://bnpb.divistant.com:3000/document/"
 val apiService : WebService by lazy {
     Retrofit.Builder()
         .baseUrl(BASE_URL)

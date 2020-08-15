@@ -21,8 +21,8 @@ class SplashActivity : BaseActivity(R.layout.activity_splash),SplashView {
     private val presenter=SplashPresenter(UserRepository(),this)
     override fun viewCreated(savedInstanceState: Bundle?) {
         handler = Handler()
-        //presenter.getKey()
-        doSplash()
+        presenter.getKey()
+        //doSplash()
     }
 
     private fun doSplash() {
