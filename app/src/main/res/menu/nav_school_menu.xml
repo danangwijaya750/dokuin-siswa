@@ -7,7 +7,7 @@
     <item
         android:id="@+id/menu_upload_school"
         android:icon="@drawable/ic_upload"
-        android:title="Upload Document" />
+        android:title="Management" />
     <item
         android:id="@+id/menu_notif_school"
         android:icon="@drawable/ic_notif"

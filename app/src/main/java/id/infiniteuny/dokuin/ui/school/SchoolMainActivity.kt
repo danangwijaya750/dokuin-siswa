@@ -15,6 +15,7 @@ import id.infiniteuny.dokuin.base.RvAdapter
 import id.infiniteuny.dokuin.data.model.UserModel
 import id.infiniteuny.dokuin.ui.main.ExampleVH
 import id.infiniteuny.dokuin.ui.school.beranda.SchoolBerandaFragment
+import id.infiniteuny.dokuin.ui.school.daftar_siswa.DaftarSiswaFragment
 import id.infiniteuny.dokuin.ui.school.notification.SchoolNotificationFragment
 import id.infiniteuny.dokuin.ui.upload_file.UploadFileActivity
 import kotlinx.android.synthetic.main.activity_school_main.*
@@ -65,7 +66,7 @@ class SchoolMainActivity : BaseActivity(R.layout.activity_school_main) {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.menu_upload_school -> {
-                openUpload()
+                changeFragment(DaftarSiswaFragment.getInstance())
                 return@OnNavigationItemSelectedListener true
             }
             R.id.menu_notif_school -> {

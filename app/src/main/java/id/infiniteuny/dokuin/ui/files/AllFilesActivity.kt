@@ -29,7 +29,6 @@ class AllFilesActivity : BaseActivity(R.layout.activity_all_files) {
         override fun layoutId(position: Int, obj: DocumentModel): Int = R.layout.item_document_detail
 
         override fun viewHolder(view: View, viewType: Int): RecyclerView.ViewHolder =AllFilesVH(view)
-
     }
 
     override fun viewCreated(savedInstanceState: Bundle?) {

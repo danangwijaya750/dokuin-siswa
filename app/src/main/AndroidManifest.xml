@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
-        <activity android:name=".ui.detail.DetailFileActivity"></activity>
+        <activity android:name=".ui.detail_siswa.DetailSiswaActivity"></activity>
+        <activity android:name=".ui.detail.DetailFileActivity" />
         <activity android:name=".ui.files.AllFilesActivity" />
         <activity android:name=".ui.upload_file.UploadFileActivity" />
         <activity android:name=".ui.instansi.InstansiMainActivity" />
