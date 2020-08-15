@@ -6,7 +6,7 @@
         android:title="Beranda" />
     <item
         android:id="@+id/menu_upload_school"
-        android:icon="@drawable/ic_upload"
+        android:icon="@drawable/ic_management"
         android:title="Management" />
     <item
         android:id="@+id/menu_notif_school"

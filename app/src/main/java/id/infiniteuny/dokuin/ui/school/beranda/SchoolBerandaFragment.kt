@@ -29,6 +29,7 @@ class SchoolBerandaFragment : BaseFragment(R.layout.fragment_school_beranda),Sch
 
     private val presenter = SchoolBerandaPresenter(this)
     private val latestDocumentApproved = mutableListOf<DocumentModel>()
+    private val waitingDocument = mutableListOf<DocumentModel>()
 
     private val adapterLatestApproved = object : RvAdapter<DocumentModel>(latestDocumentApproved,
         {
@@ -38,6 +39,17 @@ class SchoolBerandaFragment : BaseFragment(R.layout.fragment_school_beranda),Sch
 
         override fun viewHolder(view: View, viewType: Int): RecyclerView.ViewHolder =
             LatestDocumentVH(view)
+
+    }
+
+    private val adapterWaitingDocument = object : RvAdapter<DocumentModel>(waitingDocument,
+        {
+            handleClick(it)
+        }) {
+        override fun layoutId(position: Int, obj: DocumentModel): Int = R.layout.item_document_waiting
+
+        override fun viewHolder(view: View, viewType: Int): RecyclerView.ViewHolder =
+            WaitingDocumentVH(view)
 
     }
 
@@ -66,7 +78,15 @@ class SchoolBerandaFragment : BaseFragment(R.layout.fragment_school_beranda),Sch
             layMan.orientation=LinearLayoutManager.HORIZONTAL
             layoutManager=layMan
         }
+
+        rv_latest_waiting.apply {
+            adapter=adapterWaitingDocument
+            val layMan=LinearLayoutManager(this@SchoolBerandaFragment.context!!)
+            layMan.orientation=LinearLayoutManager.HORIZONTAL
+            layoutManager=layMan
+        }
         presenter.getLatest(FirebaseAuth.getInstance().currentUser!!.uid)
+        presenter.getWaiting(FirebaseAuth.getInstance().currentUser!!.uid)
     }
 
     override fun onLoading(state: Boolean) {
@@ -84,5 +104,11 @@ class SchoolBerandaFragment : BaseFragment(R.layout.fragment_school_beranda),Sch
         latestDocumentApproved.clear()
         latestDocumentApproved.addAll(data)
         adapterLatestApproved.notifyDataSetChanged()
+    }
+
+    override fun showResultWaiting(data: List<DocumentModel>) {
+        waitingDocument.clear()
+        waitingDocument.addAll(data)
+        adapterWaitingDocument.notifyDataSetChanged()
     }
 }

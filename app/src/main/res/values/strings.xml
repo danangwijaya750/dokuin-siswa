@@ -24,4 +24,10 @@
     <string name="approved_documents">Approved Documents</string>
     <string name="viewed">Viewed</string>
     <string name="greeting">Hai, %s</string>
+
+    <string-array name="kelas">
+        <item>X (Sepuluh)</item>
+        <item>XI (Sebelas)</item>
+        <item>XII (Duabelas)</item>
+    </string-array>
 </resources>

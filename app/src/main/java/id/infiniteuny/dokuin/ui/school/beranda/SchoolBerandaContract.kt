@@ -30,11 +30,35 @@ class SchoolBerandaPresenter(private val view: SchoolBerandaView) : BasePresente
                 view.onError(it.localizedMessage)
             }
     }
+    fun getWaiting(uid:String){
+        view.onLoading(true)
+        db.collection("documents")
+            .whereEqualTo("schoolId",uid)
+            .whereEqualTo("status","waiting")
+            .get()
+            .addOnSuccessListener {
+                if(!it.isEmpty){
+                    val data= mutableListOf<DocumentModel>()
+                    it.forEach {snap->
+                        data.add(snap.toObject(DocumentModel::class.java).withId(snap.id))
+                    }
+                    view.showResultWaiting(data)
+                }else{
+                    view.showResultWaiting(listOf())
+                }
+                view.onLoading(false)
+            }
+            .addOnFailureListener {
+                view.onLoading(false)
+                view.onError(it.localizedMessage)
+            }
+    }
 }
 
 interface SchoolBerandaView {
     fun onLoading(state:Boolean)
     fun onError(msg:String)
     fun showResult(data:List<DocumentModel>)
+    fun showResultWaiting(data:List<DocumentModel>)
 }
 

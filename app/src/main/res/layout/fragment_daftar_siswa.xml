@@ -72,8 +72,8 @@
             android:layout_height="50dp"
             android:layout_marginTop="15dp"
             android:background="@drawable/rounded_edittext"
-
-            android:paddingStart="20dp"
+            android:entries="@array/kelas"
+            android:paddingStart="40dp"
             android:paddingEnd="20dp"
             android:spinnerMode="dropdown"
             android:textSize="16sp"
