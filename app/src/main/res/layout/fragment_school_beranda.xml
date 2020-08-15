@@ -32,7 +32,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.rishabhharit.roundedimageview.RoundedImageView
-                android:id="@+id/iv_preview_attachment"
+                android:id="@+id/user_profile_school"
                 android:layout_width="34dp"
                 android:layout_height="34dp"
                 android:background="@drawable/bg_circle"
