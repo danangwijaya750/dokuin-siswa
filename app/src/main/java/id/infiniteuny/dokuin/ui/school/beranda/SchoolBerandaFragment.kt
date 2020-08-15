@@ -12,6 +12,8 @@ import id.infiniteuny.dokuin.base.BaseFragment
 import id.infiniteuny.dokuin.base.RvAdapter
 import id.infiniteuny.dokuin.data.local.SharedPref
 import id.infiniteuny.dokuin.data.model.DocumentModel
+import id.infiniteuny.dokuin.ui.files.AllFilesActivity
+import id.infiniteuny.dokuin.ui.files.AllFilesVH
 import id.infiniteuny.dokuin.ui.login.LoginActivity
 import id.infiniteuny.dokuin.ui.main.beranda.BerandaPresenter
 import id.infiniteuny.dokuin.ui.main.beranda.LatestApprovedVH
@@ -44,6 +46,11 @@ class SchoolBerandaFragment : BaseFragment(R.layout.fragment_school_beranda),Sch
             startActivity(Intent(requireContext(), LoginActivity::class.java))
             activity?.finish()
         }
+
+        ll_all.setOnClickListener {
+            startActivity(Intent(context,AllFilesActivity::class.java))
+        }
+
         tv_user_name.text =
             requireContext().getString(R.string.greeting, SharedPref(requireContext()).userName)
         rv_latest.apply {

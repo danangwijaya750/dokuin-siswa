@@ -5,12 +5,16 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.toObject
 import id.infiniteuny.dokuin.R
 import id.infiniteuny.dokuin.base.BaseActivity
 import id.infiniteuny.dokuin.base.RvAdapter
 import id.infiniteuny.dokuin.data.local.SharedPref
 import id.infiniteuny.dokuin.data.model.DocumentModel
+import id.infiniteuny.dokuin.util.logE
+import id.infiniteuny.dokuin.util.toast
 import kotlinx.android.synthetic.main.activity_all_files.*
 
 class AllFilesActivity : BaseActivity(R.layout.activity_all_files) {
@@ -40,17 +44,50 @@ class AllFilesActivity : BaseActivity(R.layout.activity_all_files) {
     private fun getPopulateData(){
         when(SharedPref(this).userRole){
             "student"->{
+               getStudentFiles()
             }
-            "school"->{}
+            "school"->{
+                getSchoolFiles()
+            }
             "instansi"->{}
         }
     }
 
     private fun getStudentFiles(){
-
+        documentList.clear()
+        db.collection("documents")
+            .whereEqualTo("studentId",FirebaseAuth.getInstance().currentUser!!.uid)
+            .get()
+            .addOnSuccessListener {
+                if(!it.isEmpty){
+                    it.forEach {snap->
+                        documentList.add(snap.toObject(DocumentModel::class.java).withId(snap.id))
+                    }
+                    rvAdapter.notifyDataSetChanged()
+                }
+            }
+            .addOnFailureListener {
+                logE(it.localizedMessage)
+                toast(it.localizedMessage)
+            }
     }
     private fun getSchoolFiles(){
-
+        documentList.clear()
+        db.collection("documents")
+            .whereEqualTo("schoolId",FirebaseAuth.getInstance().currentUser!!.uid)
+            .get()
+            .addOnSuccessListener {
+                if(!it.isEmpty){
+                    it.forEach {snap->
+                        documentList.add(snap.toObject(DocumentModel::class.java).withId(snap.id))
+                    }
+                    rvAdapter.notifyDataSetChanged()
+                }
+            }
+            .addOnFailureListener {
+                logE(it.localizedMessage)
+                toast(it.localizedMessage)
+            }
     }
 
 
