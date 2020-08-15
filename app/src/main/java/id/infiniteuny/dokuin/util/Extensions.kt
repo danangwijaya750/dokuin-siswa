@@ -20,6 +20,11 @@ fun Context.toast(msg: String?) {
     tst.setGravity(Gravity.CENTER, 0, 0)
     tst.show()
 }
+fun Context.toastLong(msg: String?) {
+    val tst = Toast.makeText(this, msg, Toast.LENGTH_LONG)
+    tst.setGravity(Gravity.CENTER, 0, 0)
+    tst.show()
+}
 
 fun Context.toastBottom(msg: String?) {
     val tst = Toast.makeText(this, msg, Toast.LENGTH_SHORT)

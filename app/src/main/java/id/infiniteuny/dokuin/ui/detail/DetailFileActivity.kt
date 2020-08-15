@@ -14,6 +14,7 @@ import id.infiniteuny.dokuin.data.repository.UploadRepository
 import id.infiniteuny.dokuin.data.service.BASE_URL
 import id.infiniteuny.dokuin.util.logE
 import id.infiniteuny.dokuin.util.toast
+import id.infiniteuny.dokuin.util.toastLong
 import kotlinx.android.synthetic.main.activity_detail_file.*
 
 class DetailFileActivity : BaseActivity((R.layout.activity_detail_file)),DetailFileView {
@@ -48,7 +49,7 @@ class DetailFileActivity : BaseActivity((R.layout.activity_detail_file)),DetailF
         wv_viewer.settings.javaScriptEnabled = true
         wv_viewer.settings.allowFileAccess = true
         wv_viewer.loadUrl(urls)
-        toast("Please reselect the document again if the pdf file is not showing")
+        toastLong("Please reselect the document again if the pdf file is not showing!")
     }
 
     override fun onStart() {
