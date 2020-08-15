@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="360dp"
     android:layout_height="155dp"
     android:layout_margin="5dp"
@@ -32,22 +33,23 @@
 
 
         <Button
-            android:layout_width="150dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="4dp"
+            android:layout_width="213dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
             android:background="@drawable/rounded_button"
             android:text="Review"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/tv_doc_title"
-            app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+            app:layout_constraintStart_toEndOf="@+id/avatar" />
 
         <TextView
             android:id="@+id/tv_doc_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:fontFamily="@font/font"
             android:text="tv_doc_date"
             android:textSize="12sp"
