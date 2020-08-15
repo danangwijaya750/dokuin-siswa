@@ -47,10 +47,10 @@ val client:OkHttpClient by lazy {
         }
         .build()
 }
-
+public const val BASE_URL="https://8d8b0bd9944b.ngrok.io/"
 val apiService : WebService by lazy {
     Retrofit.Builder()
-        .baseUrl("https://a64a2e07d0ef.ngrok.io/")
+        .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .client(client)
         .build()

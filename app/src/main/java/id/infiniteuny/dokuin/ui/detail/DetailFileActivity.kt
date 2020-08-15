@@ -11,6 +11,7 @@ import id.infiniteuny.dokuin.data.local.SharedPref
 import id.infiniteuny.dokuin.data.model.DocumentModel
 import id.infiniteuny.dokuin.data.model.VerifyResponse
 import id.infiniteuny.dokuin.data.repository.UploadRepository
+import id.infiniteuny.dokuin.data.service.BASE_URL
 import id.infiniteuny.dokuin.util.logE
 import id.infiniteuny.dokuin.util.toast
 import kotlinx.android.synthetic.main.activity_detail_file.*
@@ -24,19 +25,27 @@ class DetailFileActivity : BaseActivity((R.layout.activity_detail_file)),DetailF
         if(SharedPref(this).userRole=="school"){
             btn_approve.visibility= View.VISIBLE
             btn_approve.setOnClickListener {
-                presenter.doVerify(data.title)
+                presenter.doVerify(data.title,data.id)
             }
         }
     }
 
     private fun showData(data:DocumentModel){
         tv_doc_title.text=data.title
-        val url= "https://a64a2e07d0ef.ngrok.io/document?filename=${data.title}&key=${SharedPref(this).key}"
+        var sles=when(SharedPref(this).userRole){
+            "school"->"document/unverif"
+            else->"document"
+        }
+        if(data.status=="approved"){
+            sles="document"
+        }
+        val url= "${BASE_URL}${sles}?filename=${data.title}&key=${SharedPref(this).key}"
         logE(url)
-        val doc= "<iframe src='http://docs.google.com/viewer?url=${url}&embedded=true'width='100%' height='100%'style='border: none;'></iframe>";
+        val urls= "https://drive.google.com/viewerng/viewer?embedded=true&url=$url"
+        //val doc= "<iframe src='http://docs.google.com/viewer?url=${url}&embedded=true'width='100%'height='100%'style='border: none;'></iframe>";
         wv_viewer.settings.javaScriptEnabled = true
         wv_viewer.settings.allowFileAccess = true
-        wv_viewer.loadUrl(url)
+        wv_viewer.loadUrl(urls)
     }
 
     override fun onStart() {

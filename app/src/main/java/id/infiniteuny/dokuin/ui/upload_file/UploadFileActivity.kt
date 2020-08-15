@@ -176,6 +176,7 @@ class UploadFileActivity : BaseActivity(R.layout.activity_upload_file),UploadFil
     private fun afterResult(data: ResponseModel){
         toast(data.message)
         startActivity(Intent(this,AllFilesActivity::class.java))
+        finish()
     }
 
 

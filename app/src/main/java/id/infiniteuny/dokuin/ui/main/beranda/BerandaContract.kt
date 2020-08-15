@@ -31,11 +31,36 @@ class BerandaPresenter(private val view: BerandaView) : BasePresenter() {
                 view.onError(it.localizedMessage)
             }
     }
+
+    fun getWaiting(uid:String){
+        view.onLoading(true)
+        db.collection("documents")
+            .whereEqualTo("studentId",uid)
+            .whereEqualTo("status","waiting")
+            .get()
+            .addOnSuccessListener {
+                if(!it.isEmpty){
+                    val data= mutableListOf<DocumentModel>()
+                    it.forEach {snap->
+                        data.add(snap.toObject(DocumentModel::class.java).withId(snap.id))
+                    }
+                    view.showResultWaiting(data)
+                }else{
+                    view.showResultWaiting(listOf())
+                }
+                view.onLoading(false)
+            }
+            .addOnFailureListener {
+                view.onLoading(false)
+                view.onError(it.localizedMessage)
+            }
+    }
 }
 
 interface BerandaView {
     fun onLoading(state:Boolean)
     fun onError(msg:String)
     fun showResult(data:List<DocumentModel>)
+    fun showResultWaiting(data:List<DocumentModel>)
 }
 

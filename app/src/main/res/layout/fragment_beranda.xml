@@ -34,13 +34,22 @@
             <com.rishabhharit.roundedimageview.RoundedImageView
                 android:id="@+id/user_profile"
                 android:layout_width="34dp"
+                android:src="@drawable/profile"
                 android:layout_height="34dp"
                 android:background="@drawable/bg_circle"
-                android:scaleType="center"
+                android:scaleType="centerCrop"
                 app:cornerRadius="34dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:roundedCorners="all" />
+            <ImageView
+                android:id="@+id/iv_key"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_key"
+                app:layout_constraintEnd_toStartOf="@id/user_profile"
+                app:layout_constraintTop_toTopOf="parent"
+                />
 
             <TextView
                 android:id="@+id/tv_user_name"

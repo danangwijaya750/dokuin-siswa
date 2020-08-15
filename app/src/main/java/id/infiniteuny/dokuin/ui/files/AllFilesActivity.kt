@@ -55,9 +55,13 @@ class AllFilesActivity : BaseActivity(R.layout.activity_all_files) {
     }
 
     private fun handleClick(data : DocumentModel){
-        val intent= Intent(this,DetailFileActivity::class.java)
-        intent.putExtra("data",data)
-        startActivity(intent)
+        if(SharedPref(this).userRole=="student"&&data.status=="waiting"){
+            toast("Your Document is under Review")
+        }else {
+            val intent = Intent(this, DetailFileActivity::class.java)
+            intent.putExtra("data", data)
+            startActivity(intent)
+        }
     }
 
     private fun getStudentFiles(){
