@@ -7,4 +7,5 @@ class UserRepository {
     private val service: WebService = apiService
 
     suspend fun getUser(id:String) = service.getUser(id)
+    suspend fun getKey()=service.getKey()
 }

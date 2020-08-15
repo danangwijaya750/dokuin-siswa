@@ -1,5 +1,6 @@
 package id.infiniteuny.dokuin.data.service
 
+import id.infiniteuny.dokuin.data.model.RSAKeyModel
 import id.infiniteuny.dokuin.data.model.ResponseModel
 import id.infiniteuny.dokuin.data.model.UserModel
 import okhttp3.MultipartBody
@@ -19,6 +20,10 @@ interface WebService{
     suspend fun uploadData(
         @Part file : MultipartBody.Part
     ):ResponseModel
+
+    @GET("/document/key")
+    suspend fun getKey():RSAKeyModel
+
 }
 
 val client:OkHttpClient by lazy {
