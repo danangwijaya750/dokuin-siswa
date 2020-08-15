@@ -17,8 +17,10 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bn_school_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?android:attr/windowBackground"
+        android:layout_height="56dp"
+        android:background="@drawable/rounded"
+        app:itemIconTint="@color/colorPrimary"
+        app:itemTextColor="@color/colorPrimary"
         app:menu="@menu/nav_school_menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
