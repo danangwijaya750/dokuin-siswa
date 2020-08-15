@@ -46,9 +46,9 @@
                 android:layout_marginTop="32dp"
                 android:fontFamily="@font/roboto_bold"
                 android:text="@string/sign_in"
-                android:textStyle="bold"
                 android:textColor="@android:color/black"
                 android:textSize="22sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -59,13 +59,13 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:autofillHints="username"
-                android:textFontWeight="100"
                 android:drawableStart="@drawable/ic_user_outline"
                 android:drawablePadding="10dp"
                 android:hint="@string/email_hint"
                 android:inputType="text|textEmailAddress"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
+                android:textFontWeight="100"
 
                 app:layout_constraintTop_toBottomOf="@id/tv_sign_in" />
 
@@ -94,10 +94,10 @@
                 android:background="@drawable/rounded_button"
                 android:fontFamily="@font/roboto_medium"
                 android:text="@string/sign_in"
-                android:textStyle="bold"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
                 android:textSize="14sp"
+                android:textStyle="bold"
                 app:layout_constraintTop_toBottomOf="@id/et_sign_in_password" />
 
             <LinearLayout
@@ -127,6 +127,18 @@
                     android:textColor="@color/colorPrimary" />
 
             </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/pb_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/btn_sign_in"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/btn_sign_in"
+                tools:visibility="visible" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
