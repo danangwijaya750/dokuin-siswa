@@ -45,7 +45,7 @@
                 android:text="Upload Document"
                 android:textColor="@android:color/white"
                 android:textFontWeight="300"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

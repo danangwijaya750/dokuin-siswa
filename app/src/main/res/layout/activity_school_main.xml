@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.school.SchoolMainActivity">
+    tools:context=".ui.main.MainActivity">
 
     <FrameLayout
-        android:id="@+id/fl_container_school"
+        android:id="@+id/fl_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -15,14 +15,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bn_school_main"
+        android:id="@+id/bn_main"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="75dp"
         android:background="@drawable/rounded"
-        app:itemIconTint="@color/colorPrimary"
-        app:itemTextColor="@color/colorPrimary"
-        app:menu="@menu/nav_school_menu"
+        app:itemIconTint="@color/nav_color"
+        app:itemTextColor="@color/nav_color"
+        app:labelVisibilityMode="selected"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/nav_student_menu" />
 </androidx.constraintlayout.widget.ConstraintLayout>
