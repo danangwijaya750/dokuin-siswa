@@ -1,5 +1,6 @@
 package id.infiniteuny.dokuin.data.service
 
+import id.infiniteuny.dokuin.data.model.ResponseModel
 import id.infiniteuny.dokuin.data.model.UserModel
 import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
@@ -14,10 +15,10 @@ interface WebService{
     suspend fun getUser(@Path("id")id:String): UserModel
 
     @Multipart
-    @POST("/upload")
+    @POST("/document")
     suspend fun uploadData(
         @Part file : MultipartBody.Part
-    ):String
+    ):ResponseModel
 }
 
 val client:OkHttpClient by lazy {
@@ -39,7 +40,7 @@ val client:OkHttpClient by lazy {
 
 val apiService : WebService by lazy {
     Retrofit.Builder()
-        .baseUrl("https://jsonplaceholder.typicode.com/")
+        .baseUrl("https://a64a2e07d0ef.ngrok.io/")
         .addConverterFactory(GsonConverterFactory.create())
         .client(client)
         .build()

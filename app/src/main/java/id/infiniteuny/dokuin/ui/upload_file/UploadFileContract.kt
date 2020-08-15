@@ -3,6 +3,7 @@ package id.infiniteuny.dokuin.ui.upload_file
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.OnLifecycleEvent
 import id.infiniteuny.dokuin.base.BasePresenter
+import id.infiniteuny.dokuin.data.model.ResponseModel
 import id.infiniteuny.dokuin.data.repository.UploadRepository
 import id.infiniteuny.dokuin.util.logE
 import kotlinx.coroutines.launch
@@ -15,11 +16,11 @@ class UploadFilePresenter(private val repository: UploadRepository,private val v
 
     fun doUploadFile(uid:String, filename:String,file: File){
         val fileReqBody = RequestBody.create(MediaType.parse("application/pdf"),file)
-        val formData= MultipartBody.Part.createFormData("lampiran", filename, fileReqBody)
+        val formData= MultipartBody.Part.createFormData("file", filename, fileReqBody)
         launch {
             try {
                 val result = repository.uploadFile(uid, filename, formData)
-                view.showResult()
+                view.showResult(result)
             }catch (throwable:Throwable){
                 logE(throwable.localizedMessage)
             }
@@ -35,5 +36,5 @@ class UploadFilePresenter(private val repository: UploadRepository,private val v
 interface UploadFileView{
     fun onLoading(state:Boolean)
     fun onError(state:Boolean)
-    fun showResult()
+    fun showResult(data:ResponseModel)
 }
