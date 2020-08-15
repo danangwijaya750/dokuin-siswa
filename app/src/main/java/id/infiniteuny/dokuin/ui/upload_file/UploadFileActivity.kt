@@ -9,6 +9,7 @@ import android.os.Environment
 import android.text.TextUtils
 import id.infiniteuny.dokuin.R
 import id.infiniteuny.dokuin.base.BaseActivity
+import id.infiniteuny.dokuin.data.model.ResponseModel
 import id.infiniteuny.dokuin.data.repository.UploadRepository
 import id.infiniteuny.dokuin.util.logE
 import kotlinx.android.synthetic.main.activity_upload_file.*
@@ -49,7 +50,9 @@ class UploadFileActivity : BaseActivity(R.layout.activity_upload_file),UploadFil
     }
 
     private fun doUpload(){
-        presenter.doUploadFile("","",File(path))
+        if(et_filename.text.toString().isNotEmpty()) {
+            presenter.doUploadFile("DcIpWriPeAfAksh5veGq7RVNF2U2 ", et_filename.text.toString(), File(path))
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -154,8 +157,8 @@ class UploadFileActivity : BaseActivity(R.layout.activity_upload_file),UploadFil
 
     }
 
-    override fun showResult() {
-
+    override fun showResult(data: ResponseModel) {
+        logE(data.message)
     }
 
 
