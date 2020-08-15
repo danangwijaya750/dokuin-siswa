@@ -2,11 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/menu_beranda_student"
-        android:title="Beranda" />
+        android:icon="@drawable/ic_home_icon"
+        android:title="Home"
+        />
     <item
         android:id="@+id/menu_upload_student"
-        android:title="Upload Document" />
+        android:title="Upload"
+        android:icon="@drawable/ic_upload"
+     />
     <item
         android:id="@+id/menu_notif_student"
-        android:title="Notifikasi" />
+        android:icon="@drawable/ic_notif"
+        android:title="Notification"
+        android:enabled="true"/>
 </menu>
