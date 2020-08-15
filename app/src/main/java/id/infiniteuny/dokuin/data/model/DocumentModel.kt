@@ -1,9 +1,21 @@
 package id.infiniteuny.dokuin.data.model
 
+import com.google.firebase.firestore.Exclude
+import java.util.*
+
 data class DocumentModel (
+    @Exclude
+    var id:String,
     var title:String,
-    var dateUpload:String,
-    var dateApproved:String,
+    var dateUpload: Date,
+    var dateApproved:Date,
     var uid:String,
     var status:String
-)
+){
+    constructor():this("","",Date(),Date(),"","")
+
+    fun withId(id:String): DocumentModel {
+        this.id=id
+        return this
+    }
+}

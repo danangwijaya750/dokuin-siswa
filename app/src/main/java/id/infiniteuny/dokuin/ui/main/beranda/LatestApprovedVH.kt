@@ -13,7 +13,7 @@ class LatestApprovedVH (override val containerView: View): RecyclerView.ViewHold
 
     override fun bindData(data: DocumentModel, listen: (DocumentModel) -> Unit, position: Int) {
         tv_doc_title.text=data.title
-        tv_doc_date.text=data.dateApproved
+        tv_doc_date.text=data.dateUpload.toString()
         itemView.setOnClickListener { listen(data) }
     }
 }
