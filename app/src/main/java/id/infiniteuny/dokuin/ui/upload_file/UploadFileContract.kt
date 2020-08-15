@@ -40,7 +40,8 @@ class UploadFilePresenter(private val repository: UploadRepository,private val v
         val db=FirebaseFirestore.getInstance()
         val data = hashMapOf(
             "title" to filename,
-            "uid" to uid,
+            "studentId" to uid,
+            "schoolId" to "REB6SPS67mZAxGS9kC3gpFjML6n1",
             "dateUpload" to Timestamp(Date()),
             "dateApproved" to Timestamp(Date()),
             "status" to "waiting"

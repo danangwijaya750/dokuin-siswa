@@ -3,6 +3,7 @@ package id.infiniteuny.dokuin.ui.files
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 import id.infiniteuny.dokuin.R
@@ -10,6 +11,7 @@ import id.infiniteuny.dokuin.base.BaseActivity
 import id.infiniteuny.dokuin.base.RvAdapter
 import id.infiniteuny.dokuin.data.local.SharedPref
 import id.infiniteuny.dokuin.data.model.DocumentModel
+import kotlinx.android.synthetic.main.activity_all_files.*
 
 class AllFilesActivity : BaseActivity(R.layout.activity_all_files) {
     private val db=FirebaseFirestore.getInstance()
@@ -25,17 +27,31 @@ class AllFilesActivity : BaseActivity(R.layout.activity_all_files) {
     }
 
     override fun viewCreated(savedInstanceState: Bundle?) {
+
+        rv_all_files.apply {
+            adapter=rvAdapter
+            val layMan=LinearLayoutManager(this@AllFilesActivity)
+            layMan.orientation=LinearLayoutManager.VERTICAL
+            layoutManager=layMan
+        }
         getPopulateData()
     }
 
     private fun getPopulateData(){
         when(SharedPref(this).userRole){
             "student"->{
-
             }
             "school"->{}
             "instansi"->{}
         }
     }
+
+    private fun getStudentFiles(){
+
+    }
+    private fun getSchoolFiles(){
+
+    }
+
 
 }

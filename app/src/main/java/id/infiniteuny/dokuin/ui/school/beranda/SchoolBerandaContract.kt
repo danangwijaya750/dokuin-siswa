@@ -1,18 +1,17 @@
-package id.infiniteuny.dokuin.ui.main.beranda
+package id.infiniteuny.dokuin.ui.school.beranda
 
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import id.infiniteuny.dokuin.base.BasePresenter
 import id.infiniteuny.dokuin.data.model.DocumentModel
 
-class BerandaPresenter(private val view: BerandaView) : BasePresenter() {
+class SchoolBerandaPresenter(private val view: SchoolBerandaView) : BasePresenter() {
     private val db =FirebaseFirestore.getInstance()
 
-    fun getLatestApproved(uid:String){
+    fun getLatest(uid:String){
         view.onLoading(true)
         db.collection("documents")
-            .whereEqualTo("studentId",uid)
-            .whereEqualTo("status","approved")
+            .whereEqualTo("schoolId",uid)
             .get()
             .addOnSuccessListener {
                 if(!it.isEmpty){
@@ -33,7 +32,7 @@ class BerandaPresenter(private val view: BerandaView) : BasePresenter() {
     }
 }
 
-interface BerandaView {
+interface SchoolBerandaView {
     fun onLoading(state:Boolean)
     fun onError(msg:String)
     fun showResult(data:List<DocumentModel>)
