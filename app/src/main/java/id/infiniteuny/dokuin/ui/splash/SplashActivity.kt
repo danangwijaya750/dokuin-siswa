@@ -3,6 +3,7 @@ package id.infiniteuny.dokuin.ui.splash
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import com.google.firebase.auth.FirebaseAuth
 import id.infiniteuny.dokuin.R
 import id.infiniteuny.dokuin.base.BaseActivity
 import id.infiniteuny.dokuin.data.local.SharedPref
@@ -21,14 +22,18 @@ class SplashActivity : BaseActivity(R.layout.activity_splash) {
 
     private fun doSplash() {
         handler?.postDelayed({
-            val intent = when (SharedPref(this).userRole) {
-                "student" -> MainActivity::class.java
-                "instansi" -> InstansiMainActivity::class.java
-                "school" -> SchoolMainActivity::class.java
-                else -> LoginActivity::class.java
+            if(FirebaseAuth.getInstance().currentUser!=null) {
+                val intent = when (SharedPref(this).userRole) {
+                    "student" -> MainActivity::class.java
+                    "instansi" -> InstansiMainActivity::class.java
+                    else -> SchoolMainActivity::class.java
+                }
+                startActivity(Intent(this, intent))
+                finish()
+            }else{
+                startActivity(Intent(this, LoginActivity::class.java))
+                finish()
             }
-            startActivity(Intent(this, intent))
-            finish()
         }, 1500)
     }
 

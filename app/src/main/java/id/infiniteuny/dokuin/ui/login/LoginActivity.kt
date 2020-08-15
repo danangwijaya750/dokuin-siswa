@@ -43,6 +43,10 @@ class LoginActivity : BaseActivity(R.layout.activity_login), AuthView {
     }
 
     override fun showUserDataResult(user: UserModel) {
+        val pref = SharedPref(this)
+        pref.userEmail=user.email!!
+        pref.userName=user.name!!
+        pref.userRole=user.role!!
         val intent: Class<out BaseActivity>
         user.role.let { role ->
             toastBottom(role.toString())
