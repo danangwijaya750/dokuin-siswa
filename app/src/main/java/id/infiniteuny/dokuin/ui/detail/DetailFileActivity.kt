@@ -36,6 +36,7 @@ class DetailFileActivity : BaseActivity((R.layout.activity_detail_file)),DetailF
         val doc= "<iframe src='http://docs.google.com/viewer?url=${url}&embedded=true'width='100%' height='100%'style='border: none;'></iframe>";
         wv_viewer.settings.javaScriptEnabled = true
         wv_viewer.settings.allowFileAccess = true
+        wv_viewer.loadUrl(url)
     }
 
     override fun onStart() {

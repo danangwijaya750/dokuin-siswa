@@ -13,6 +13,7 @@ import id.infiniteuny.dokuin.base.RvAdapter
 import id.infiniteuny.dokuin.data.local.SharedPref
 import id.infiniteuny.dokuin.data.model.DocumentModel
 import id.infiniteuny.dokuin.data.model.StudentModel
+import id.infiniteuny.dokuin.ui.detail_siswa.DetailSiswaActivity
 import id.infiniteuny.dokuin.ui.files.AllFilesActivity
 import id.infiniteuny.dokuin.ui.files.AllFilesVH
 import id.infiniteuny.dokuin.ui.login.LoginActivity
@@ -31,7 +32,7 @@ class DaftarSiswaFragment : BaseFragment(R.layout.fragment_daftar_siswa){
 
     private val adapterLatestApproved = object : RvAdapter<StudentModel>(listStudent,
         {
-
+            handleClick(it)
         }) {
         override fun layoutId(position: Int, obj: StudentModel): Int = R.layout.item_document
 
@@ -40,16 +41,13 @@ class DaftarSiswaFragment : BaseFragment(R.layout.fragment_daftar_siswa){
 
     }
 
+    private fun handleClick(data:StudentModel){
+        val intent=Intent(context!!,DetailSiswaActivity::class.java)
+        intent.putExtra("data",data)
+        startActivity(intent)
+    }
+
     override fun viewCreated(savedInstanceState: Bundle?) {
-        user_profile_school.setOnClickListener {
-            FirebaseAuth.getInstance().signOut()
-            startActivity(Intent(requireContext(), LoginActivity::class.java))
-            activity?.finish()
-        }
-
-
-        tv_user_name.text =
-            requireContext().getString(R.string.greeting, SharedPref(requireContext()).userName)
         rv_latest.apply {
             adapter=adapterLatestApproved
             val layMan=LinearLayoutManager(this@DaftarSiswaFragment.context!!)
@@ -59,7 +57,10 @@ class DaftarSiswaFragment : BaseFragment(R.layout.fragment_daftar_siswa){
         populateData()
     }
     private fun populateData(){
-        listStudent.add(StudentModel("","","","",""))
+        listStudent.add(StudentModel("kgRK8fcJ8pWRNRiIjXBp4KIC3cs2","","","",""))
+        listStudent.add(StudentModel("kgRK8fcJ8pWRNRiIjXBp4KIC3cs2","","","",""))
+        listStudent.add(StudentModel("kgRK8fcJ8pWRNRiIjXBp4KIC3cs2","","","",""))
+        listStudent.add(StudentModel("kgRK8fcJ8pWRNRiIjXBp4KIC3cs2","","","",""))
     }
 
 

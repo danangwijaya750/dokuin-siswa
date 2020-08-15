@@ -12,6 +12,7 @@ import id.infiniteuny.dokuin.base.BaseFragment
 import id.infiniteuny.dokuin.base.RvAdapter
 import id.infiniteuny.dokuin.data.local.SharedPref
 import id.infiniteuny.dokuin.data.model.DocumentModel
+import id.infiniteuny.dokuin.ui.detail.DetailFileActivity
 import id.infiniteuny.dokuin.ui.files.AllFilesActivity
 import id.infiniteuny.dokuin.ui.files.AllFilesVH
 import id.infiniteuny.dokuin.ui.login.LoginActivity
@@ -31,13 +32,19 @@ class SchoolBerandaFragment : BaseFragment(R.layout.fragment_school_beranda),Sch
 
     private val adapterLatestApproved = object : RvAdapter<DocumentModel>(latestDocumentApproved,
         {
-
+            handleClick(it)
         }) {
         override fun layoutId(position: Int, obj: DocumentModel): Int = R.layout.item_document
 
         override fun viewHolder(view: View, viewType: Int): RecyclerView.ViewHolder =
             LatestDocumentVH(view)
 
+    }
+
+    private fun handleClick(data : DocumentModel){
+        val intent= Intent(context!!, DetailFileActivity::class.java)
+        intent.putExtra("data",data)
+        startActivity(intent)
     }
 
     override fun viewCreated(savedInstanceState: Bundle?) {
