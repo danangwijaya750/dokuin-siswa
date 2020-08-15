@@ -4,7 +4,7 @@ import id.infiniteuny.dokuin.data.service.WebService
 import id.infiniteuny.dokuin.data.service.apiService
 
 class UserRepository {
-    private val service:WebService= apiService
+    private val service: WebService = apiService
 
     suspend fun getUser(id:String) = service.getUser(id)
 }

@@ -32,7 +32,7 @@ class UploadFileActivity : BaseActivity(R.layout.activity_upload_file),UploadFil
         intent.type = "application/pdf"
         intent.addCategory(Intent.CATEGORY_OPENABLE)
         try {
-            startActivityForResult(Intent.createChooser(intent, "Select a File"), PICK_FILE);
+            startActivityForResult(Intent.createChooser(intent, "Select a File"), PICK_FILE)
         }catch (ex:Exception){
             logE(ex.localizedMessage)
         }
@@ -71,7 +71,7 @@ class UploadFileActivity : BaseActivity(R.layout.activity_upload_file),UploadFil
         }
     }
     private fun extractFile(){
-        logE("File Name : ${path?.substring(path!!.lastIndexOf("/")+1)}")
+        logE("File Name : ${path?.substring(path!!.lastIndexOf("/") + 1)}")
     }
 
 
@@ -110,7 +110,7 @@ class UploadFileActivity : BaseActivity(R.layout.activity_upload_file),UploadFil
         try {
             val inputStream = context.contentResolver.openInputStream(srcUri!!)
                 ?: return
-            val outputStream: OutputStream = FileOutputStream(dstFile)
+            val outputStream: OutputStream = FileOutputStream(dstFile!!)
             copystream(inputStream, outputStream)
             inputStream.close()
             outputStream.close()
