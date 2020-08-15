@@ -74,6 +74,7 @@
                 android:layout_marginTop="15dp"
                 android:background="@drawable/rounded_edittext"
                 android:hint="@string/search"
+                android:textStyle="italic"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
