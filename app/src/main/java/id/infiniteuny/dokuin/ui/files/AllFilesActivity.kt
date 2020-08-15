@@ -1,5 +1,6 @@
 package id.infiniteuny.dokuin.ui.files
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -13,6 +14,7 @@ import id.infiniteuny.dokuin.base.BaseActivity
 import id.infiniteuny.dokuin.base.RvAdapter
 import id.infiniteuny.dokuin.data.local.SharedPref
 import id.infiniteuny.dokuin.data.model.DocumentModel
+import id.infiniteuny.dokuin.ui.detail.DetailFileActivity
 import id.infiniteuny.dokuin.util.logE
 import id.infiniteuny.dokuin.util.toast
 import kotlinx.android.synthetic.main.activity_all_files.*
@@ -22,7 +24,7 @@ class AllFilesActivity : BaseActivity(R.layout.activity_all_files) {
 
     private val documentList= mutableListOf<DocumentModel>()
     private val rvAdapter=object:RvAdapter<DocumentModel>(documentList,{
-
+     handleClick(it)
     }){
         override fun layoutId(position: Int, obj: DocumentModel): Int = R.layout.item_document_detail
 
@@ -51,6 +53,12 @@ class AllFilesActivity : BaseActivity(R.layout.activity_all_files) {
             }
             "instansi"->{}
         }
+    }
+
+    private fun handleClick(data : DocumentModel){
+        val intent= Intent(this,DetailFileActivity::class.java)
+        intent.putExtra("data",data)
+        startActivity(intent)
     }
 
     private fun getStudentFiles(){

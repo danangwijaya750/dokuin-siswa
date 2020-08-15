@@ -11,4 +11,6 @@ class UploadRepository {
     private val service: WebService = apiService
 
     suspend fun uploadFile(uid:String,filename:String,formData:MultipartBody.Part) = service.uploadData(formData)
+    suspend fun verifyFile(filename: String)=service.verifDocument(filename)
+
 }

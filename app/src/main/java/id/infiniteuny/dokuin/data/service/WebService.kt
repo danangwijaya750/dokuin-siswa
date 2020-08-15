@@ -3,6 +3,7 @@ package id.infiniteuny.dokuin.data.service
 import id.infiniteuny.dokuin.data.model.RSAKeyModel
 import id.infiniteuny.dokuin.data.model.ResponseModel
 import id.infiniteuny.dokuin.data.model.UserModel
+import id.infiniteuny.dokuin.data.model.VerifyResponse
 import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -23,6 +24,10 @@ interface WebService{
 
     @GET("/document/key")
     suspend fun getKey():RSAKeyModel
+
+    @FormUrlEncoded
+    @POST("/document/verify")
+    suspend fun verifDocument(@Field("filename")filename:String):VerifyResponse
 
 }
 

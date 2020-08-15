@@ -62,14 +62,34 @@ class UploadFilePresenter(private val repository: UploadRepository,private val v
         }
         db.collection("documents").add(data)
             .addOnSuccessListener {
-                view.onLoading(false)
-                view.showResult(result)
+                if(role=="student") {
+                    view.showResult(result)
+                    view.onLoading(false)
+                }else{
+                    doVerify(filename,result)
+                }
             }
             .addOnFailureListener {
                 logE(it.localizedMessage)
                 view.onError(it.localizedMessage)
                 view.onLoading(false)
             }
+    }
+    private fun doVerify(filename: String,result: ResponseModel){
+        view.onLoading(true)
+        launch {
+            try {
+                val resVerif = withContext(Dispatchers.IO) { repository.verifyFile(filename) }
+                if(resVerif.status!!){
+                    logE("ress ${resVerif.message.toString()}")
+                    view.onLoading(false)
+                    view.showResult(result)
+                }
+            }catch (t:Throwable){
+                view.onError(t.localizedMessage)
+                logE(t.localizedMessage)
+            }
+        }
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
