@@ -11,6 +11,7 @@ import android.view.View
 import com.google.firebase.auth.FirebaseAuth
 import id.infiniteuny.dokuin.R
 import id.infiniteuny.dokuin.base.BaseActivity
+import id.infiniteuny.dokuin.data.local.SharedPref
 import id.infiniteuny.dokuin.data.model.ResponseModel
 import id.infiniteuny.dokuin.data.repository.UploadRepository
 import id.infiniteuny.dokuin.ui.files.AllFilesActivity
@@ -54,8 +55,9 @@ class UploadFileActivity : BaseActivity(R.layout.activity_upload_file),UploadFil
     }
 
     private fun doUpload(){
+        val role=SharedPref(this).userRole
         if(et_filename.text.toString().isNotEmpty()) {
-            presenter.doUploadFile(FirebaseAuth.getInstance().uid!!, "${et_filename.text}.pdf", File(path))
+            presenter.doUploadFile(FirebaseAuth.getInstance().uid!!, "${et_filename.text}.pdf", File(path),role)
         }
     }
 

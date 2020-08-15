@@ -21,14 +21,14 @@ import java.util.*
 
 class UploadFilePresenter(private val repository: UploadRepository,private val view: UploadFileView): BasePresenter() {
 
-    fun doUploadFile(uid:String, filename:String,file: File){
+    fun doUploadFile(uid:String, filename:String,file: File,role:String){
         view.onLoading(true)
         val fileReqBody = RequestBody.create(MediaType.parse("application/pdf"),file)
         val formData= MultipartBody.Part.createFormData("file", filename, fileReqBody)
         launch {
             try {
                 val result = withContext(Dispatchers.IO){ repository.uploadFile(uid, filename, formData)}
-                uploadFirestore(result,filename, uid)
+                uploadFirestore(result,filename, uid,role)
             }catch (throwable:Throwable){
                 logE(throwable.localizedMessage)
                 view.onError(throwable.localizedMessage)
@@ -36,15 +36,30 @@ class UploadFilePresenter(private val repository: UploadRepository,private val v
             }
         }
     }
-    private fun uploadFirestore(result:ResponseModel,filename: String,uid: String){
+    private fun uploadFirestore(result:ResponseModel,filename: String,uid: String,role: String){
         val db=FirebaseFirestore.getInstance()
-        val data = hashMapOf(
-            "title" to filename,
-            "uid" to uid,
-            "dateUpload" to Timestamp(Date()),
-            "dateApproved" to Timestamp(Date()),
-            "status" to "waiting"
-        )
+        val data = when(role){
+            "student"->{
+                hashMapOf(
+                    "title" to filename,
+                    "studentId" to uid,
+                    "schoolId" to "REB6SPS67mZAxGS9kC3gpFjML6n1",
+                    "dateUpload" to Timestamp(Date()),
+                    "dateApproved" to Timestamp(Date()),
+                    "status" to "waiting"
+                )
+            }
+            else->{
+                hashMapOf(
+                    "title" to filename,
+                    "studentId" to "kgRK8fcJ8pWRNRiIjXBp4KIC3cs2",
+                    "schoolId" to uid,
+                    "dateUpload" to Timestamp(Date()),
+                    "dateApproved" to Timestamp(Date()),
+                    "status" to "approved"
+                )
+            }
+        }
         db.collection("documents").add(data)
             .addOnSuccessListener {
                 view.onLoading(false)

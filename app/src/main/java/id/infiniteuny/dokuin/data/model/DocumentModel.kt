@@ -9,10 +9,11 @@ data class DocumentModel (
     var title:String,
     var dateUpload: Date,
     var dateApproved:Date,
-    var uid:String,
+    var studentId:String,
+    var schoolId:String,
     var status:String
 ){
-    constructor():this("","",Date(),Date(),"","")
+    constructor():this("","",Date(),Date(),"","","")
 
     fun withId(id:String): DocumentModel {
         this.id=id
