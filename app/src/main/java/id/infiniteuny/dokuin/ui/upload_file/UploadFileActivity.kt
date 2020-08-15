@@ -7,11 +7,13 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.text.TextUtils
+import android.view.View
 import id.infiniteuny.dokuin.R
 import id.infiniteuny.dokuin.base.BaseActivity
 import id.infiniteuny.dokuin.data.model.ResponseModel
 import id.infiniteuny.dokuin.data.repository.UploadRepository
 import id.infiniteuny.dokuin.util.logE
+import id.infiniteuny.dokuin.util.toast
 import kotlinx.android.synthetic.main.activity_upload_file.*
 import java.io.*
 
@@ -51,7 +53,7 @@ class UploadFileActivity : BaseActivity(R.layout.activity_upload_file),UploadFil
 
     private fun doUpload(){
         if(et_filename.text.toString().isNotEmpty()) {
-            presenter.doUploadFile("DcIpWriPeAfAksh5veGq7RVNF2U2 ", et_filename.text.toString(), File(path))
+            presenter.doUploadFile("DcIpWriPeAfAksh5veGq7RVNF2U2 ", "${et_filename.text}.pdf", File(path))
         }
     }
 
@@ -150,15 +152,23 @@ class UploadFileActivity : BaseActivity(R.layout.activity_upload_file),UploadFil
     }
 
     override fun onLoading(state: Boolean) {
-
+        when(state){
+            true-> pg_loading.visibility= View.VISIBLE
+            false-> pg_loading.visibility=View.GONE
+        }
     }
 
-    override fun onError(state: Boolean) {
-
+    override fun onError(msg: String) {
+        logE(msg)
     }
 
     override fun showResult(data: ResponseModel) {
         logE(data.message)
+        afterResult(data)
+    }
+
+    private fun afterResult(data: ResponseModel){
+        toast(data.message)
     }
 
 
