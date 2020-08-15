@@ -19,7 +19,7 @@
     <string name="newest">Newest</string>
     <string name="see_all">See All</string>
     <string name="waiting_documents">Waiting Documents</string>
-    <string name="latest">Latest</string>
+    <string name="latest">Latest\u0020</string>
     <string name="documents">Documents</string>
     <string name="approved_documents">Approved Documents</string>
     <string name="viewed">Viewed</string>

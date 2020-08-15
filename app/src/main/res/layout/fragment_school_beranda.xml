@@ -35,7 +35,7 @@
                 android:id="@+id/iv_preview_attachment"
                 android:layout_width="34dp"
                 android:layout_height="34dp"
-                android:background="@android:color/white"
+                android:background="@drawable/bg_circle"
                 android:scaleType="center"
                 app:cornerRadius="34dp"
                 app:layout_constraintEnd_toEndOf="parent"
