@@ -17,7 +17,7 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bn_main"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="75dp"
         android:background="@drawable/rounded"
         app:itemIconTint="@color/nav_color"
         app:itemTextColor="@color/nav_color"
