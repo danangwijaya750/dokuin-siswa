@@ -8,10 +8,12 @@ import android.os.Bundle
 import android.os.Environment
 import android.text.TextUtils
 import android.view.View
+import com.google.firebase.auth.FirebaseAuth
 import id.infiniteuny.dokuin.R
 import id.infiniteuny.dokuin.base.BaseActivity
 import id.infiniteuny.dokuin.data.model.ResponseModel
 import id.infiniteuny.dokuin.data.repository.UploadRepository
+import id.infiniteuny.dokuin.ui.files.AllFilesActivity
 import id.infiniteuny.dokuin.util.logE
 import id.infiniteuny.dokuin.util.toast
 import kotlinx.android.synthetic.main.activity_upload_file.*
@@ -53,7 +55,7 @@ class UploadFileActivity : BaseActivity(R.layout.activity_upload_file),UploadFil
 
     private fun doUpload(){
         if(et_filename.text.toString().isNotEmpty()) {
-            presenter.doUploadFile("DcIpWriPeAfAksh5veGq7RVNF2U2 ", "${et_filename.text}.pdf", File(path))
+            presenter.doUploadFile(FirebaseAuth.getInstance().uid!!, "${et_filename.text}.pdf", File(path))
         }
     }
 
@@ -68,6 +70,8 @@ class UploadFileActivity : BaseActivity(R.layout.activity_upload_file),UploadFil
                     path=getFilePathFromURI(this,uri)
                     logE("path is $path")
                     extractFile()
+                }else{
+                    finish()
                 }
             }
         }
@@ -169,6 +173,7 @@ class UploadFileActivity : BaseActivity(R.layout.activity_upload_file),UploadFil
 
     private fun afterResult(data: ResponseModel){
         toast(data.message)
+        startActivity(Intent(this,AllFilesActivity::class.java))
     }
 
 
