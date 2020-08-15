@@ -44,8 +44,10 @@
                 app:roundedCorners="all" />
             <ImageView
                 android:id="@+id/iv_key"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="5dp"
                 android:src="@drawable/ic_key"
                 app:layout_constraintEnd_toStartOf="@id/user_profile"
                 app:layout_constraintTop_toTopOf="parent"

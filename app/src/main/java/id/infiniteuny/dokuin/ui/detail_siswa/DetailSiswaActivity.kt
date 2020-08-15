@@ -14,6 +14,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import id.infiniteuny.dokuin.R
 import id.infiniteuny.dokuin.base.BaseActivity
 import id.infiniteuny.dokuin.base.RvAdapter
+import id.infiniteuny.dokuin.data.local.SharedPref
 import id.infiniteuny.dokuin.data.model.DocumentModel
 import id.infiniteuny.dokuin.data.model.StudentModel
 import id.infiniteuny.dokuin.ui.detail.DetailFileActivity
@@ -45,6 +46,10 @@ class DetailSiswaActivity : BaseActivity(R.layout.activity_detail_siswa) {
     }
 
     override fun viewCreated(savedInstanceState: Bundle?) {
+
+        if(SharedPref(this).userRole=="instansi"){
+            floating_action_button.visibility=View.GONE
+        }
         rv_all_files.apply {
             adapter=rvAdapter
             val layManager=LinearLayoutManager(this@DetailSiswaActivity)

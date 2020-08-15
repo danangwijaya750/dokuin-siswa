@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:paddingBottom="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -35,8 +35,9 @@
                 android:id="@+id/user_profile_instansi"
                 android:layout_width="34dp"
                 android:layout_height="34dp"
+                android:src="@drawable/profile"
                 android:background="@drawable/bg_circle"
-                android:scaleType="center"
+                android:scaleType="centerCrop"
                 app:cornerRadius="34dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -67,110 +68,32 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_user_name" />
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/tv_search"
+            <EditText
+                android:id="@+id/et_search"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/rounded_edittext"
                 android:hint="@string/search"
+                android:inputType="text"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
+                android:imeOptions="actionSearch"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_like_todo" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+            <ImageView
+                android:id="@+id/iv_key"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginTop="15dp"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_search">
+                android:src="@drawable/ic_key"
+                app:layout_constraintTop_toTopOf="@id/et_search"
+                app:layout_constraintEnd_toEndOf="@id/et_search"
+                app:tint="@android:color/darker_gray" />
 
-                <LinearLayout
-                    android:id="@+id/ll_newest"
-                    android:layout_width="70dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="5dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <com.rishabhharit.roundedimageview.RoundedImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:background="@drawable/bg_circle"
-                        android:scaleType="center"
-                        android:src="@drawable/ic_newest"
-                        app:cornerRadius="60dp" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center"
-                        android:text="@string/newest"
-                        android:textColor="@android:color/white" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ll_viewed"
-                    android:layout_width="70dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="5dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <com.rishabhharit.roundedimageview.RoundedImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:background="@drawable/bg_circle"
-                        android:scaleType="center"
-                        android:src="@drawable/ic_viewed"
-                        app:cornerRadius="60dp" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center"
-                        android:text="@string/viewed"
-                        android:textColor="@android:color/white" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ll_all"
-                    android:layout_width="70dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="5dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <com.rishabhharit.roundedimageview.RoundedImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:background="@drawable/bg_circle"
-                        android:scaleType="center"
-                        android:src="@drawable/ic_all_files"
-                        app:cornerRadius="60dp" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center"
-                        android:text="@string/all_files"
-                        android:textColor="@android:color/white" />
-                </LinearLayout>
-            </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
@@ -200,15 +123,16 @@
             app:layout_constraintTop_toBottomOf="@id/cl_header" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_latest_approved"
+            android:id="@+id/rv_user"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_margin="10dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ll_latest_up" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
