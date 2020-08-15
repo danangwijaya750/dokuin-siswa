@@ -2,6 +2,7 @@ package id.infiniteuny.dokuin.ui.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import com.google.firebase.auth.FirebaseAuth
 import id.infiniteuny.dokuin.R
 import id.infiniteuny.dokuin.base.BaseActivity
@@ -10,7 +11,6 @@ import id.infiniteuny.dokuin.data.model.UserModel
 import id.infiniteuny.dokuin.ui.instansi.InstansiMainActivity
 import id.infiniteuny.dokuin.ui.main.MainActivity
 import id.infiniteuny.dokuin.ui.school.SchoolMainActivity
-import id.infiniteuny.dokuin.util.toast
 import id.infiniteuny.dokuin.util.toastBottom
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -22,16 +22,26 @@ class LoginActivity : BaseActivity(R.layout.activity_login), AuthView {
         val fAuth = FirebaseAuth.getInstance()
 
         btn_sign_in.setOnClickListener {
+            pb_login.visibility = View.VISIBLE
+            btn_sign_in.visibility = View.INVISIBLE
+
             val email = et_sign_in_email.text.toString()
             val pass = et_sign_in_password.text.toString()
-            if (email.isNotEmpty() && pass.isNotEmpty())
+            if (email.isNotEmpty() && pass.isNotEmpty()) {
                 fAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
                     if (it.isSuccessful) {
                         getUserRole(it.result?.user?.uid)
                     } else {
-                        toast("Incorrect email or password!")
+                        toastBottom("Incorrect email or password!")
+                        pb_login.visibility = View.INVISIBLE
+                        btn_sign_in.visibility = View.VISIBLE
                     }
                 }
+            } else {
+                toastBottom("Please enter your email and password!")
+                pb_login.visibility = View.INVISIBLE
+                btn_sign_in.visibility = View.VISIBLE
+            }
         }
 
         btn_goto_sign_up.setOnClickListener {
