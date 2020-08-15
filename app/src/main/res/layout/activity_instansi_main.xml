@@ -26,9 +26,9 @@
                 android:id="@+id/iv_logo"
                 android:layout_width="70dp"
                 android:layout_height="30dp"
+                android:contentDescription="@string/cd_logo"
                 android:src="@drawable/ic_logo_white"
                 app:layout_constraintStart_toStartOf="parent"
-                android:contentDescription="@string/cd_logo"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.rishabhharit.roundedimageview.RoundedImageView
@@ -104,13 +104,15 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:background="@drawable/bg_circle"
+                        android:scaleType="center"
+                        android:src="@drawable/ic_newest"
                         app:cornerRadius="60dp" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
                         android:layout_marginTop="5dp"
+                        android:gravity="center"
                         android:text="@string/newest"
                         android:textColor="@android:color/white" />
                 </LinearLayout>
@@ -129,13 +131,15 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:background="@drawable/bg_circle"
+                        android:scaleType="center"
+                        android:src="@drawable/ic_viewed"
                         app:cornerRadius="60dp" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
                         android:layout_marginTop="5dp"
+                        android:gravity="center"
                         android:text="@string/viewed"
                         android:textColor="@android:color/white" />
                 </LinearLayout>
@@ -161,8 +165,8 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
                         android:layout_marginTop="5dp"
+                        android:gravity="center"
                         android:text="@string/all_files"
                         android:textColor="@android:color/white" />
                 </LinearLayout>
