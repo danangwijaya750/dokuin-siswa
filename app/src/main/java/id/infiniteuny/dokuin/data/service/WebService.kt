@@ -28,31 +28,6 @@ interface WebService{
     @FormUrlEncoded
     @POST("/document/verify")
     suspend fun verifDocument(@Field("filename")filename:String):VerifyResponse
-
-}
-
-val client:OkHttpClient by lazy {
-    OkHttpClient.Builder()
-        .connectTimeout(60L,TimeUnit.SECONDS)
-        .readTimeout(60L, TimeUnit.SECONDS)
-        .writeTimeout(60L, TimeUnit.SECONDS)
-        .addInterceptor(HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.BODY
-        })
-        .addInterceptor { chain ->
-            val req = chain.request()
-                .newBuilder()
-                .build()
-            return@addInterceptor chain.proceed(req)
-        }
-        .build()
 }
 public const val BASE_URL="http://bnpb.divistant.com:3000/document/"
-val apiService : WebService by lazy {
-    Retrofit.Builder()
-        .baseUrl(BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create())
-        .client(client)
-        .build()
-        .create(WebService::class.java)
-}
+

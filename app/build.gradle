@@ -68,4 +68,12 @@ dependencies {
     //imageview
     implementation 'com.rishabhharit.roundedimageview:RoundedImageView:0.8.4'
 
+    //koin
+    implementation 'org.koin:koin-core:1.0.2'
+    implementation 'org.koin:koin-android:1.0.2'
+
+    //pin edit
+    implementation 'com.poovam:pin-edittext-field:1.2.3'
+
+
 }
