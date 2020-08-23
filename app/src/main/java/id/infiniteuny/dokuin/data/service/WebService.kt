@@ -1,9 +1,6 @@
 package id.infiniteuny.dokuin.data.service
 
-import id.infiniteuny.dokuin.data.model.RSAKeyModel
-import id.infiniteuny.dokuin.data.model.ResponseModel
-import id.infiniteuny.dokuin.data.model.UserModel
-import id.infiniteuny.dokuin.data.model.VerifyResponse
+import id.infiniteuny.dokuin.data.model.*
 import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -28,6 +25,13 @@ interface WebService{
     @FormUrlEncoded
     @POST("/document/verify")
     suspend fun verifDocument(@Field("filename")filename:String):VerifyResponse
+
+    @FormUrlEncoded
+    @POST("/auth/login")
+    suspend fun loginUser(
+        @Field("email")email:String,
+        @Field("password")password:String
+    ):LoginModel
 }
 public const val BASE_URL="http://bnpb.divistant.com:3000/document/"
 

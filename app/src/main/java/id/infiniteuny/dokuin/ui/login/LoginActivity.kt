@@ -7,15 +7,20 @@ import com.google.firebase.auth.FirebaseAuth
 import id.infiniteuny.dokuin.R
 import id.infiniteuny.dokuin.base.BaseActivity
 import id.infiniteuny.dokuin.data.local.SharedPref
+import id.infiniteuny.dokuin.data.model.LoginModel
 import id.infiniteuny.dokuin.data.model.UserModel
 import id.infiniteuny.dokuin.ui.instansi.InstansiMainActivity
-import id.infiniteuny.dokuin.ui.main.MainActivity
+import id.infiniteuny.dokuin.ui.student.MainActivity
 import id.infiniteuny.dokuin.ui.school.SchoolMainActivity
 import id.infiniteuny.dokuin.util.toastBottom
 import kotlinx.android.synthetic.main.activity_login.*
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 class LoginActivity : BaseActivity(R.layout.activity_login), AuthView {
-    private val presenter = AuthPresenter(this)
+    private val presenter by inject<AuthPresenter> {
+        parametersOf(this)
+    }
 
     override fun viewCreated(savedInstanceState: Bundle?) {
 
@@ -44,6 +49,8 @@ class LoginActivity : BaseActivity(R.layout.activity_login), AuthView {
             }
         }
 
+
+
         btn_goto_sign_up.setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))
         }
@@ -70,5 +77,17 @@ class LoginActivity : BaseActivity(R.layout.activity_login), AuthView {
         }
         startActivity(Intent(this, intent))
         finish()
+    }
+
+    override fun showLoginResult(data: LoginModel) {
+
+    }
+
+    override fun onError(msg: String) {
+
+    }
+
+    override fun onLoading(state: Boolean) {
+
     }
 }

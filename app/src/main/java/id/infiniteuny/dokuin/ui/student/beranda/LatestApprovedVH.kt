@@ -1,10 +1,9 @@
-package id.infiniteuny.dokuin.ui.main.beranda
+package id.infiniteuny.dokuin.ui.student.beranda
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import id.infiniteuny.dokuin.base.RvAdapter
 import id.infiniteuny.dokuin.data.model.DocumentModel
-import id.infiniteuny.dokuin.data.model.UserModel
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_document.*
 

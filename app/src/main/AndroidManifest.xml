@@ -24,7 +24,7 @@
         <activity android:name=".ui.instansi.InstansiMainActivity" />
         <activity android:name=".ui.school.SchoolMainActivity" />
         <activity android:name=".ui.login.SignUpActivity" />
-        <activity android:name=".ui.main.MainActivity" />
+        <activity android:name=".ui.student.MainActivity" />
         <activity android:name=".ui.login.LoginActivity" />
         <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>

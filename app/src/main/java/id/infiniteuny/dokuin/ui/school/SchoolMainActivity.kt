@@ -13,7 +13,7 @@ import id.infiniteuny.dokuin.R
 import id.infiniteuny.dokuin.base.BaseActivity
 import id.infiniteuny.dokuin.base.RvAdapter
 import id.infiniteuny.dokuin.data.model.UserModel
-import id.infiniteuny.dokuin.ui.main.ExampleVH
+import id.infiniteuny.dokuin.ui.student.ExampleVH
 import id.infiniteuny.dokuin.ui.school.beranda.SchoolBerandaFragment
 import id.infiniteuny.dokuin.ui.school.daftar_siswa.DaftarSiswaFragment
 import id.infiniteuny.dokuin.ui.school.notification.SchoolNotificationFragment

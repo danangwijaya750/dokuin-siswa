@@ -11,18 +11,18 @@ import id.infiniteuny.dokuin.data.model.RSAKeyModel
 import id.infiniteuny.dokuin.data.repository.UserRepository
 import id.infiniteuny.dokuin.ui.instansi.InstansiMainActivity
 import id.infiniteuny.dokuin.ui.login.LoginActivity
-import id.infiniteuny.dokuin.ui.main.MainActivity
+import id.infiniteuny.dokuin.ui.student.MainActivity
 import id.infiniteuny.dokuin.ui.school.SchoolMainActivity
 import id.infiniteuny.dokuin.util.toast
 
 class SplashActivity : BaseActivity(R.layout.activity_splash),SplashView {
 
     private var handler: Handler? = null
-    private val presenter=SplashPresenter(UserRepository(),this)
+    //private val presenter=SplashPresenter(UserRepository(),this)
     override fun viewCreated(savedInstanceState: Bundle?) {
         handler = Handler()
-        presenter.getKey()
-        //doSplash()
+        //presenter.getKey()
+        doSplash()
     }
 
     private fun doSplash() {
@@ -49,7 +49,7 @@ class SplashActivity : BaseActivity(R.layout.activity_splash),SplashView {
 
     override fun onStart() {
         super.onStart()
-        lifecycle.addObserver(presenter)
+        //lifecycle.addObserver(presenter)
     }
 
     override fun onError(msg: String) {

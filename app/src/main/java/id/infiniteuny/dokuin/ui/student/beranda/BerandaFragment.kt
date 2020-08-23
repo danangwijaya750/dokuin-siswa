@@ -1,6 +1,5 @@
-package id.infiniteuny.dokuin.ui.main.beranda
+package id.infiniteuny.dokuin.ui.student.beranda
 
-import android.R.attr.label
 import android.app.AlertDialog
 import android.content.ClipData
 import android.content.ClipboardManager
@@ -8,7 +7,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth

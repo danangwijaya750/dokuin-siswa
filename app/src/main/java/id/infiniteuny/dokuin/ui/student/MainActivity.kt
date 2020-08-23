@@ -1,4 +1,4 @@
-package id.infiniteuny.dokuin.ui.main
+package id.infiniteuny.dokuin.ui.student
 
 import android.Manifest
 import android.content.Intent
@@ -13,8 +13,8 @@ import id.infiniteuny.dokuin.R
 import id.infiniteuny.dokuin.base.BaseActivity
 import id.infiniteuny.dokuin.base.RvAdapter
 import id.infiniteuny.dokuin.data.model.UserModel
-import id.infiniteuny.dokuin.ui.main.beranda.BerandaFragment
-import id.infiniteuny.dokuin.ui.main.notification.StudentNotificationFragment
+import id.infiniteuny.dokuin.ui.student.beranda.BerandaFragment
+import id.infiniteuny.dokuin.ui.student.notification.StudentNotificationFragment
 import id.infiniteuny.dokuin.ui.upload_file.UploadFileActivity
 import kotlinx.android.synthetic.main.activity_main.*
 

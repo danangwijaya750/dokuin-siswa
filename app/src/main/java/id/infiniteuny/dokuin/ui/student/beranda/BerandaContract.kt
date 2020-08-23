@@ -1,7 +1,6 @@
-package id.infiniteuny.dokuin.ui.main.beranda
+package id.infiniteuny.dokuin.ui.student.beranda
 
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
 import id.infiniteuny.dokuin.base.BasePresenter
 import id.infiniteuny.dokuin.data.model.DocumentModel
 

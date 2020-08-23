@@ -1,6 +1,7 @@
 package id.infiniteuny.dokuin.base
 
 import androidx.lifecycle.LifecycleObserver
+import id.infiniteuny.dokuin.util.logE
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -12,6 +13,7 @@ abstract class BasePresenter :LifecycleObserver,CoroutineScope{
 
     protected fun cleanUp(){
         job.cancel()
+        logE("canceled")
     }
 
 }

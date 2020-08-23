@@ -1,4 +1,4 @@
-package id.infiniteuny.dokuin.ui.main.notification
+package id.infiniteuny.dokuin.ui.student.notification
 
 import android.os.Bundle
 import id.infiniteuny.dokuin.R

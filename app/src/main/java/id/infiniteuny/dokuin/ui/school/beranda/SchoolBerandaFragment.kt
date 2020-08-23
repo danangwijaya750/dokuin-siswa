@@ -1,7 +1,6 @@
 package id.infiniteuny.dokuin.ui.school.beranda
 
 import android.content.Intent
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,10 +13,7 @@ import id.infiniteuny.dokuin.data.local.SharedPref
 import id.infiniteuny.dokuin.data.model.DocumentModel
 import id.infiniteuny.dokuin.ui.detail.DetailFileActivity
 import id.infiniteuny.dokuin.ui.files.AllFilesActivity
-import id.infiniteuny.dokuin.ui.files.AllFilesVH
 import id.infiniteuny.dokuin.ui.login.LoginActivity
-import id.infiniteuny.dokuin.ui.main.beranda.BerandaPresenter
-import id.infiniteuny.dokuin.ui.main.beranda.LatestApprovedVH
 import id.infiniteuny.dokuin.util.logE
 import kotlinx.android.synthetic.main.fragment_school_beranda.*
 

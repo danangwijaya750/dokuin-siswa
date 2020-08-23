@@ -75,7 +75,7 @@ class UploadFilePresenter(private val repository: UploadRepository,private val v
                 view.onLoading(false)
             }
     }
-    private fun doVerify(filename: String,result: ResponseModel){
+     fun doVerify(filename: String,result: ResponseModel){
         view.onLoading(true)
         launch {
             try {

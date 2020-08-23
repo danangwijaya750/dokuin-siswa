@@ -1,4 +1,4 @@
-package id.infiniteuny.dokuin.ui.main
+package id.infiniteuny.dokuin.ui.student
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

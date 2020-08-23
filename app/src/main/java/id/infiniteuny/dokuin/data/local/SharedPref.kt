@@ -11,6 +11,7 @@ class SharedPref(ctx: Context) {
     private val USERNAME = "USER_NAME"
     private val ROLE = "USER_ROLE"
     private val KEY = "KEY"
+    private val AUTH_TOKEN="AUTH_TOKEN"
 
     private val prefs: SharedPreferences = ctx.getSharedPreferences(PREF_NAME, 0)
 
@@ -32,4 +33,7 @@ class SharedPref(ctx: Context) {
     var key: String
         get() = prefs.getString(KEY, "").toString()
         set(value) = prefs.edit().putString(KEY, value).apply()
+    var authToken: String
+        get() = prefs.getString(AUTH_TOKEN, "").toString()
+        set(value) = prefs.edit().putString(AUTH_TOKEN, value).apply()
 }

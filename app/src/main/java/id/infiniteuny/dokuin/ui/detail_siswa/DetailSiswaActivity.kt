@@ -3,13 +3,11 @@ package id.infiniteuny.dokuin.ui.detail_siswa
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import id.infiniteuny.dokuin.R
 import id.infiniteuny.dokuin.base.BaseActivity
@@ -18,7 +16,6 @@ import id.infiniteuny.dokuin.data.local.SharedPref
 import id.infiniteuny.dokuin.data.model.DocumentModel
 import id.infiniteuny.dokuin.data.model.StudentModel
 import id.infiniteuny.dokuin.ui.detail.DetailFileActivity
-import id.infiniteuny.dokuin.ui.main.beranda.LatestApprovedVH
 import id.infiniteuny.dokuin.ui.upload_file.UploadFileActivity
 import id.infiniteuny.dokuin.util.logE
 import id.infiniteuny.dokuin.util.toast

@@ -12,14 +12,19 @@ import id.infiniteuny.dokuin.data.model.DocumentModel
 import id.infiniteuny.dokuin.data.model.VerifyResponse
 import id.infiniteuny.dokuin.data.repository.UploadRepository
 import id.infiniteuny.dokuin.data.service.BASE_URL
+import id.infiniteuny.dokuin.ui.upload_file.UploadFilePresenter
 import id.infiniteuny.dokuin.util.logE
 import id.infiniteuny.dokuin.util.toast
 import id.infiniteuny.dokuin.util.toastLong
 import kotlinx.android.synthetic.main.activity_detail_file.*
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 class DetailFileActivity : BaseActivity((R.layout.activity_detail_file)),DetailFileView {
 
-    private val presenter=DetailFilePresenter(UploadRepository(),this)
+    private val presenter by inject<DetailFilePresenter>{
+        parametersOf(this)
+    }
     override fun viewCreated(savedInstanceState: Bundle?) {
         val data=intent.extras?.get("data") as DocumentModel
         showData(data)

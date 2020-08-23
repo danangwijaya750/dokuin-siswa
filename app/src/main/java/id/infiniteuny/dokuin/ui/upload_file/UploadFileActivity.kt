@@ -18,13 +18,18 @@ import id.infiniteuny.dokuin.ui.files.AllFilesActivity
 import id.infiniteuny.dokuin.util.logE
 import id.infiniteuny.dokuin.util.toast
 import kotlinx.android.synthetic.main.activity_upload_file.*
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 import java.io.*
 
 
 class UploadFileActivity : BaseActivity(R.layout.activity_upload_file),UploadFileView {
 
     private var path:String?=""
-    private val presenter=UploadFilePresenter(UploadRepository(),this)
+    private val presenter by inject<UploadFilePresenter>{
+        parametersOf(this)
+    }
+
     companion object {
         private const val PICK_FILE=101
         private const val BUFFER_SIZE = 1024 * 2
