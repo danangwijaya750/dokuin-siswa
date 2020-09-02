@@ -53,6 +53,7 @@ class LoginActivity : BaseActivity(R.layout.activity_login), AuthView {
 
         btn_goto_sign_up.setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))
+            finish()
         }
     }
 

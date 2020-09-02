@@ -8,7 +8,7 @@ data class SendEmailOTP(
     @SerializedName("expire")
     var expire: Int=0,
     @SerializedName("maxattempt")
-    var maxattempt: Int=1,
+    var maxattempt: Int=10,
     @SerializedName("message")
     var message: String="Please Enter This OTP : {{otp}}",
     @SerializedName("recipient")

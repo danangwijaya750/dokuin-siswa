@@ -56,7 +56,7 @@ class AuthPresenter(private val repository: UserRepository,private val view: Aut
     fun signUpUser(email: String,pass: String){
         launch {
             try{
-                val data= SendEmailOTP(4,10,1,"Please Enter This OTP : {{otp}}",email,"Kode OTP Registrasi DOKUIN.ID" )
+                val data= SendEmailOTP(4,10,1,"Kode OTP untuk Registrasi Anda : {{otp}}",email,"Kode OTP Registrasi DOKUIN.ID" )
                 val result= withContext(Dispatchers.IO){BigBoxService.createService().sendEmailOTP(email,data)}
                 if(result.status==200){
                     view.otpSended()

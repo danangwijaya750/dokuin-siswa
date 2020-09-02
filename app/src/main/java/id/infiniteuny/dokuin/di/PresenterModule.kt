@@ -4,6 +4,8 @@ import id.infiniteuny.dokuin.ui.detail.DetailFilePresenter
 import id.infiniteuny.dokuin.ui.detail.DetailFileView
 import id.infiniteuny.dokuin.ui.login.AuthPresenter
 import id.infiniteuny.dokuin.ui.login.AuthView
+import id.infiniteuny.dokuin.ui.otp.VerifyOtpPresenter
+import id.infiniteuny.dokuin.ui.otp.VerifyOtpView
 import id.infiniteuny.dokuin.ui.upload_file.UploadFilePresenter
 import id.infiniteuny.dokuin.ui.upload_file.UploadFileView
 import org.koin.dsl.module.module
@@ -17,5 +19,8 @@ val presenterModule = module {
     }
     factory {(view: DetailFileView)->
         DetailFilePresenter(get(),view)
+    }
+    factory {(view: VerifyOtpView)->
+        VerifyOtpPresenter(get(),get(),view)
     }
 }
