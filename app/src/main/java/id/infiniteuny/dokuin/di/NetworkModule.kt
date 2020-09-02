@@ -1,6 +1,6 @@
 package id.infiniteuny.dokuin.di
 
-import id.infiniteuny.dokuin.data.service.BASE_URL
+import id.infiniteuny.dokuin.data.service.BigBoxService.BASE_URL
 import id.infiniteuny.dokuin.data.service.WebService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -32,7 +32,6 @@ val networkModule = module{
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(get())
                 .build()
-                .create(WebService::class.java)
         }
     single{
         createService<WebService>(get())

@@ -6,8 +6,10 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
 import id.infiniteuny.dokuin.base.BasePresenter
 import id.infiniteuny.dokuin.data.model.LoginModel
+import id.infiniteuny.dokuin.data.model.SendEmailOTP
 import id.infiniteuny.dokuin.data.model.UserModel
 import id.infiniteuny.dokuin.data.repository.UserRepository
+import id.infiniteuny.dokuin.data.service.BigBoxService
 import id.infiniteuny.dokuin.util.logD
 import id.infiniteuny.dokuin.util.logE
 import kotlinx.coroutines.Dispatchers
@@ -46,15 +48,34 @@ class AuthPresenter(private val repository: UserRepository,private val view: Aut
         }
     }
 
+
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     fun onDestroy(){
         cleanUp()
+    }
+    fun signUpUser(email: String,pass: String){
+        launch {
+            try{
+                val data= SendEmailOTP(4,10,1,"Please Enter This OTP : {{otp}}",email,"Kode OTP Registrasi DOKUIN.ID" )
+                val result= withContext(Dispatchers.IO){BigBoxService.createService().sendEmailOTP(email,data)}
+                if(result.status==200){
+                    view.otpSended()
+                }
+                else{
+                    view.onError(result.message!!)
+                }
+            }
+            catch (t:Throwable){
+                logE(t.localizedMessage)
+            }
+        }
     }
 }
 
 interface AuthView {
     fun showUserDataResult(user: UserModel)
     fun showLoginResult(data:LoginModel)
+    fun otpSended()
     fun onError(msg:String)
     fun onLoading(state:Boolean)
 }

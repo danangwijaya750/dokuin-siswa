@@ -1,5 +1,6 @@
 package id.infiniteuny.dokuin.data.service
 
+import com.google.gson.annotations.SerializedName
 import id.infiniteuny.dokuin.data.model.*
 import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
@@ -32,6 +33,10 @@ interface WebService{
         @Field("email")email:String,
         @Field("password")password:String
     ):LoginModel
+
+
+
 }
-public const val BASE_URL="http://bnpb.divistant.com:3000/document/"
+
+
 

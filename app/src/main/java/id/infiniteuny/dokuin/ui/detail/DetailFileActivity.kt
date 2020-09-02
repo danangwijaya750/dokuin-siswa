@@ -11,7 +11,6 @@ import id.infiniteuny.dokuin.data.local.SharedPref
 import id.infiniteuny.dokuin.data.model.DocumentModel
 import id.infiniteuny.dokuin.data.model.VerifyResponse
 import id.infiniteuny.dokuin.data.repository.UploadRepository
-import id.infiniteuny.dokuin.data.service.BASE_URL
 import id.infiniteuny.dokuin.ui.upload_file.UploadFilePresenter
 import id.infiniteuny.dokuin.util.logE
 import id.infiniteuny.dokuin.util.toast

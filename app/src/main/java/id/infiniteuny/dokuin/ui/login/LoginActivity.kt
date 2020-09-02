@@ -83,6 +83,10 @@ class LoginActivity : BaseActivity(R.layout.activity_login), AuthView {
 
     }
 
+    override fun otpSended() {
+
+    }
+
     override fun onError(msg: String) {
 
     }
