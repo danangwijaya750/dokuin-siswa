@@ -30,3 +30,14 @@ data class BigBoxResponse(
     @SerializedName("status")
     var status: Int?
 )
+
+data class SendNotifResponse(
+    @SerializedName("code")
+    var code: String?,
+    @SerializedName("message")
+    var message: String?,
+    @SerializedName("msgid")
+    var msgid: String?,
+    @SerializedName("status")
+    var status: String?
+)

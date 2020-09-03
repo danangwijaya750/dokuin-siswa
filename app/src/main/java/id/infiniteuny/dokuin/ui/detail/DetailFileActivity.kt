@@ -1,5 +1,6 @@
 package id.infiniteuny.dokuin.ui.detail
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -11,11 +12,13 @@ import id.infiniteuny.dokuin.data.local.SharedPref
 import id.infiniteuny.dokuin.data.model.DocumentModel
 import id.infiniteuny.dokuin.data.model.VerifyResponse
 import id.infiniteuny.dokuin.data.repository.UploadRepository
+import id.infiniteuny.dokuin.ui.otp.VerifyOtpActivity
 import id.infiniteuny.dokuin.ui.upload_file.UploadFilePresenter
 import id.infiniteuny.dokuin.util.logE
 import id.infiniteuny.dokuin.util.toast
 import id.infiniteuny.dokuin.util.toastLong
 import kotlinx.android.synthetic.main.activity_detail_file.*
+import kotlinx.android.synthetic.main.activity_sign_up.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
@@ -30,7 +33,8 @@ class DetailFileActivity : BaseActivity((R.layout.activity_detail_file)),DetailF
         if(SharedPref(this).userRole=="school"){
             btn_approve.visibility= View.VISIBLE
             btn_approve.setOnClickListener {
-                presenter.doVerify(data.title,data.id)
+                //presenter.doVerify(data.title,data.id)
+                presenter.sendOtp(SharedPref(this).userEmail)
             }
         }
         iv_back.setOnClickListener {
@@ -74,6 +78,15 @@ class DetailFileActivity : BaseActivity((R.layout.activity_detail_file)),DetailF
 
     override fun showResult(data: VerifyResponse) {
         toast(data.data!!.status)
+    }
+
+    override fun otpSended() {
+        val email=SharedPref(this).userEmail
+        toast("Kode OTP Terkirim ke Email $email")
+        val intent= Intent(this, VerifyOtpActivity::class.java)
+        intent.putExtra("caller","verif")
+        intent.putExtra("email",email)
+        startActivity(intent)
     }
 
     override fun onBackPressed() {

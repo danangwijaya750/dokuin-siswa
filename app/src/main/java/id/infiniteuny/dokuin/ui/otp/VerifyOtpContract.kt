@@ -22,7 +22,37 @@ class VerifyOtpPresenter(private val userRepository: UserRepository
                 val result=withContext(Dispatchers.IO){BigBoxService.createService()
                     .verifyEmailOTP(email,4,10,otp)}
                 if(result.status==200){
-                    logE("msg")
+                    view.verifSignUp()
+                }
+                logE(result.message)
+            }
+            catch (t:Throwable){
+                logE(t.localizedMessage)
+            }
+        }
+    }
+    fun verifOtpDoc(email:String,otp:String,password:String,noHp:String){
+        launch {
+            try {
+                val result=withContext(Dispatchers.IO){BigBoxService.createService()
+                    .verifyEmailOTP(email,4,10,otp)}
+                if(result.status==200){
+                    sendNotif()
+                }
+                logE(result.message)
+            }
+            catch (t:Throwable){
+                logE(t.localizedMessage)
+            }
+        }
+    }
+    private fun sendNotif(){
+        launch {
+            try {
+                val result=withContext(Dispatchers.IO){BigBoxService.createService()
+                    .sendNotification("+62895391804582","Document anda sudah terverifikasi")}
+                if(result.status=="SUCCESS"){
+                    view.verifDoc()
                 }
                 logE(result.message)
             }
@@ -32,6 +62,7 @@ class VerifyOtpPresenter(private val userRepository: UserRepository
         }
     }
 
+
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     fun onDestroy(){
         cleanUp()
@@ -40,5 +71,8 @@ class VerifyOtpPresenter(private val userRepository: UserRepository
 }
 
 interface VerifyOtpView{
-
+    fun onLoading(state:Boolean)
+    fun onError(msg:String)
+    fun verifSignUp()
+    fun verifDoc()
 }

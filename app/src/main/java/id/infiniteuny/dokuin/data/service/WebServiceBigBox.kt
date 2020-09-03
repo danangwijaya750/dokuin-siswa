@@ -30,6 +30,12 @@ interface WebServiceBigBox{
         otpstr: String
     ):BigBoxResponse
 
+    @FormUrlEncoded
+    @POST("/sms-notification/1.0.0/messages")
+    suspend fun sendNotification(
+        @Field("msisdn") msisdn:String,
+        @Field("content")content:String
+    ):SendNotifResponse
 
 
 }
