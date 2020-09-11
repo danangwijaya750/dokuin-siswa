@@ -30,4 +30,10 @@
         <item>XI (Sebelas)</item>
         <item>XII (Duabelas)</item>
     </string-array>
+    <string-array name="sekolah">
+        <item>--Pilih Sekolah--</item>
+        <item>SMK N 2 Yogyakarta</item>
+        <item>SMA N 1 Yogyakarta</item>
+        <item>SMA N 1 Godean</item>
+    </string-array>
 </resources>

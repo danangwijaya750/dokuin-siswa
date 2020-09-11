@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import id.infiniteuny.dokuin.R
 import id.infiniteuny.dokuin.base.BaseActivity
+import id.infiniteuny.dokuin.data.model.DocumentModel
+import id.infiniteuny.dokuin.data.model.VerifyResponse
 import id.infiniteuny.dokuin.ui.login.LoginActivity
 import id.infiniteuny.dokuin.util.toast
 import kotlinx.android.synthetic.main.activity_verify_otp.*
@@ -49,7 +51,12 @@ class VerifyOtpActivity : BaseActivity(R.layout.activity_verify_otp),VerifyOtpVi
     }
 
     override fun verifDoc() {
-        toast("Verfikasi Berhasil")
+        val data = intent.extras?.get("data-doc") as DocumentModel
+        presenter.doVerify(data.title,data.id)
+    }
+
+    override fun showResult(data: VerifyResponse) {
+        toast("Verifikasi Dokumen Berhasil")
         finish()
     }
 

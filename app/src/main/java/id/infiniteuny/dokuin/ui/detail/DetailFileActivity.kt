@@ -27,13 +27,13 @@ class DetailFileActivity : BaseActivity((R.layout.activity_detail_file)),DetailF
     private val presenter by inject<DetailFilePresenter>{
         parametersOf(this)
     }
+    private lateinit var data:DocumentModel
     override fun viewCreated(savedInstanceState: Bundle?) {
-        val data=intent.extras?.get("data") as DocumentModel
+        data=intent.extras?.get("data") as DocumentModel
         showData(data)
         if(SharedPref(this).userRole=="school"){
             btn_approve.visibility= View.VISIBLE
             btn_approve.setOnClickListener {
-                //presenter.doVerify(data.title,data.id)
                 presenter.sendOtp(SharedPref(this).userEmail)
             }
         }
@@ -86,6 +86,7 @@ class DetailFileActivity : BaseActivity((R.layout.activity_detail_file)),DetailF
         val intent= Intent(this, VerifyOtpActivity::class.java)
         intent.putExtra("caller","verif")
         intent.putExtra("email",email)
+        intent.putExtra("data-doc",data)
         startActivity(intent)
     }
 

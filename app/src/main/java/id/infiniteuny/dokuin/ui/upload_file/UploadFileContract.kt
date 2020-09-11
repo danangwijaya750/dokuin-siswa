@@ -43,7 +43,7 @@ class UploadFilePresenter(private val repository: UploadRepository,private val v
                 hashMapOf(
                     "title" to filename,
                     "studentId" to uid,
-                    "schoolId" to "REB6SPS67mZAxGS9kC3gpFjML6n1",
+                    "schoolId" to "hnNMeUV2OdRlcAP9ZVk1jwK3jkf2",
                     "dateUpload" to Timestamp(Date()),
                     "dateApproved" to Timestamp(Date()),
                     "status" to "waiting"
@@ -52,7 +52,7 @@ class UploadFilePresenter(private val repository: UploadRepository,private val v
             else->{
                 hashMapOf(
                     "title" to filename,
-                    "studentId" to "kgRK8fcJ8pWRNRiIjXBp4KIC3cs2",
+                    "studentId" to "xywaEuuVQ3fs9eOaKFJm8cbDSjt1",
                     "schoolId" to uid,
                     "dateUpload" to Timestamp(Date()),
                     "dateApproved" to Timestamp(Date()),

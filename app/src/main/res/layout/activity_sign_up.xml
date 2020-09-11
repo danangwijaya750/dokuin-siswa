@@ -112,6 +112,34 @@
                 android:textFontWeight="100"
                 android:paddingEnd="16dp"
                 app:layout_constraintTop_toBottomOf="@id/et_sign_up_password" />
+            <EditText
+                android:id="@+id/et_sign_up_telp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:drawableStart="@drawable/ic_lock_outline"
+                android:drawablePadding="10dp"
+                android:hint="No. Telp"
+                android:inputType="number"
+                android:paddingStart="16dp"
+                android:textFontWeight="100"
+                android:paddingEnd="16dp"
+                app:layout_constraintTop_toBottomOf="@id/et_sign_up_password_conf" />
+            <Spinner
+                android:id="@+id/sp_sekolah"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:entries="@array/sekolah"
+                android:layout_margin="16dp"
+                android:autofillHints="password"
+                android:drawableStart="@drawable/ic_lock_outline"
+                android:drawablePadding="10dp"
+                android:hint="No. Telp"
+                android:inputType="textPassword"
+                android:paddingStart="16dp"
+                android:textFontWeight="100"
+                android:paddingEnd="16dp"
+                app:layout_constraintTop_toBottomOf="@id/et_sign_up_telp" />
 
             <Button
                 android:id="@+id/btn_sign_up"
@@ -127,7 +155,7 @@
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/et_sign_up_password_conf" />
+                app:layout_constraintTop_toBottomOf="@id/sp_sekolah" />
 
             <LinearLayout
                 android:id="@+id/btn_goto_sign_in"
