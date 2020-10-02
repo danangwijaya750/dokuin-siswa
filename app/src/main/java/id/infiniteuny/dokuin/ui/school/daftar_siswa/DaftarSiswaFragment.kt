@@ -146,8 +146,8 @@ class DaftarSiswaFragment : BaseFragment(R.layout.fragment_daftar_siswa) {
         listStudent.add(
             StudentModel(
                 "kgRK8fcJ8pWRNRiIjXBp4KIC3cs2",
-                "Ricardo Dwiyoga",
-                "Bambanglipuro Bantul",
+                "Danang Dwiyoga",
+                "Godean Sleman",
                 "5543654",
                 ""
             )

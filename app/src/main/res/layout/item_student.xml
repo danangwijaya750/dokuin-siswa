@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="379dp"
+    android:layout_width="match_parent"
     android:layout_height="91dp"
     android:layout_gravity="center"
-    android:layout_margin="5dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginBottom="5dp"
     app:cardCornerRadius="10dp"
     app:cardElevation="7dp">
 
@@ -30,19 +32,14 @@
             android:text="Ricardo Wijaya"
             android:textSize="15sp"
             app:layout_constraintBottom_toTopOf="@+id/tv_student_nisn"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/avatar"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.727" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-
             android:layout_width="61dp"
             android:layout_height="14dp"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="8dp"
-
             android:background="@drawable/rounded_status_green"
             android:gravity="center"
             android:text="Acive"
@@ -58,7 +55,7 @@
             android:layout_height="16dp"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/font"
-            android:text=""
+            android:text="12313132"
             android:textFontWeight="100"
             android:textSize="12sp"
             app:layout_constraintBottom_toTopOf="@+id/textView2"
@@ -67,15 +64,13 @@
 
         <com.rishabhharit.roundedimageview.RoundedImageView
             android:id="@+id/avatar"
-            android:layout_width="43dp"
-            android:layout_height="43dp"
-            android:layout_marginEnd="292dp"
-            android:background="@android:color/darker_gray"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
             android:scaleType="centerCrop"
             android:src="@drawable/profile"
             app:cornerRadius="34dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:roundedCorners="all" />
 
