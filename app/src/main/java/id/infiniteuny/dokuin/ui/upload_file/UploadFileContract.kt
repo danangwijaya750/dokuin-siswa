@@ -4,7 +4,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.OnLifecycleEvent
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.type.DateTime
 import id.infiniteuny.dokuin.base.BasePresenter
 import id.infiniteuny.dokuin.data.model.ResponseModel
 import id.infiniteuny.dokuin.data.repository.UploadRepository
@@ -16,7 +15,6 @@ import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
-import java.time.LocalDateTime
 import java.util.*
 
 class UploadFilePresenter(private val repository: UploadRepository,private val view: UploadFileView): BasePresenter() {
@@ -43,7 +41,7 @@ class UploadFilePresenter(private val repository: UploadRepository,private val v
                 hashMapOf(
                     "title" to filename,
                     "studentId" to uid,
-                    "schoolId" to "hnNMeUV2OdRlcAP9ZVk1jwK3jkf2",
+                    "schoolId" to "REB6SPS67mZAxGS9kC3gpFjML6n1",
                     "dateUpload" to Timestamp(Date()),
                     "dateApproved" to Timestamp(Date()),
                     "status" to "waiting"
@@ -52,7 +50,7 @@ class UploadFilePresenter(private val repository: UploadRepository,private val v
             else->{
                 hashMapOf(
                     "title" to filename,
-                    "studentId" to "xywaEuuVQ3fs9eOaKFJm8cbDSjt1",
+                    "studentId" to "kgRK8fcJ8pWRNRiIjXBp4KIC3cs2",
                     "schoolId" to uid,
                     "dateUpload" to Timestamp(Date()),
                     "dateApproved" to Timestamp(Date()),

@@ -51,8 +51,10 @@ class VerifyOtpPresenter(private val userRepository: UserRepository
     private fun sendNotif(){
         launch {
             try {
-                val result=withContext(Dispatchers.IO){BigBoxService.createService()
-                    .sendNotification("0895391804582","Document anda sudah terverifikasi")}
+                val result=withContext(Dispatchers.IO){
+                    BigBoxService.createService()
+                        .sendNotification("082310487958", "Document anda sudah terverifikasi")
+                }
                 if(result.status=="SUCCESS"){
                     view.verifDoc()
                 }
