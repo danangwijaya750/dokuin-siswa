@@ -28,6 +28,7 @@ class DetailFileActivity : BaseActivity((R.layout.activity_detail_file)), Detail
         if (SharedPref(this).userRole == "school") {
             btn_approve.visibility = View.VISIBLE
             btn_approve.setOnClickListener {
+                btn_approve.visibility = View.INVISIBLE
                 presenter.sendOtp(SharedPref(this).userEmail)
             }
         }
@@ -76,6 +77,9 @@ class DetailFileActivity : BaseActivity((R.layout.activity_detail_file)), Detail
 
     override fun showResult(data: VerifyResponse) {
         toast(data.data!!.status)
+        btn_approve.visibility = View.VISIBLE
+        btn_approve.text = "Approved"
+        btn_approve.isEnabled = false
     }
 
     override fun otpSended() {
