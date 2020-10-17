@@ -64,7 +64,7 @@
                 android:layout_marginTop="15dp"
                 android:text="@string/what_would_you_like_to_do"
                 android:textColor="@android:color/white"
-                android:textSize="19sp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_user_name" />
@@ -142,7 +142,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:gravity="center"
-                        android:text="@string/draft"
+                        android:text="@string/check_files"
                         android:textColor="@android:color/white" />
                 </LinearLayout>
 

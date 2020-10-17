@@ -10,8 +10,8 @@
     <string name="name_hint">Name</string>
     <string name="email_hint">Email</string>
     <string name="all_files">All Files</string>
-    <string name="draft">Draft</string>
-    <string name="what_would_you_like_to_do">What would you like to do?</string>
+    <string name="check_files">Check File</string>
+    <string name="what_would_you_like_to_do">Let\'s manage and secure your document !</string>
     <string name="search">Search</string>
     <string name="waiting">Waiting</string>
     <string name="completed">Done</string>
@@ -24,6 +24,7 @@
     <string name="approved_documents">Approved Documents</string>
     <string name="viewed">Viewed</string>
     <string name="greeting">Hai, %s</string>
+    <string name="greeting_insctance">Let\'s check your newes list !</string>
 
     <string-array name="kelas">
         <item>X (Sepuluh)</item>
