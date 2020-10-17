@@ -27,7 +27,7 @@ class SplashActivity : BaseActivity(R.layout.activity_splash),SplashView {
 
     private fun doSplash() {
         handler?.postDelayed({
-            if(FirebaseAuth.getInstance().currentUser!=null) {
+            if(SharedPref(this).userEmail!="") {
                 val intent = when (SharedPref(this).userRole) {
                     "student" -> MainActivity::class.java
                     "instansi" -> InstansiMainActivity::class.java

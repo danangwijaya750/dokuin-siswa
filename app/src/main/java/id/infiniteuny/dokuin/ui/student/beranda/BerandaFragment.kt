@@ -14,12 +14,15 @@ import id.infiniteuny.dokuin.R
 import id.infiniteuny.dokuin.base.BaseFragment
 import id.infiniteuny.dokuin.base.RvAdapter
 import id.infiniteuny.dokuin.data.local.SharedPref
+import id.infiniteuny.dokuin.data.model.Data
 import id.infiniteuny.dokuin.data.model.DocumentModel
 import id.infiniteuny.dokuin.ui.detail.DetailFileActivity
 import id.infiniteuny.dokuin.ui.files.AllFilesActivity
 import id.infiniteuny.dokuin.ui.login.LoginActivity
 import id.infiniteuny.dokuin.util.logE
 import kotlinx.android.synthetic.main.fragment_beranda.*
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 
 class BerandaFragment : BaseFragment(R.layout.fragment_beranda), BerandaView {
@@ -28,31 +31,34 @@ class BerandaFragment : BaseFragment(R.layout.fragment_beranda), BerandaView {
         fun getInstance(): BerandaFragment = BerandaFragment()
     }
 
-    private val presenter = BerandaPresenter(this)
-    private val latestDocumentApproved = mutableListOf<DocumentModel>()
+    private val presenter by inject<BerandaPresenter>(){
+        parametersOf(this)
+    }
+    private val myDocuments= mutableListOf<Data>()
+    private val latestDocumentApproved = mutableListOf<Data>()
 
-    private val adapterLatestApproved = object : RvAdapter<DocumentModel>(latestDocumentApproved,
+    private val adapterLatestApproved = object : RvAdapter<Data>(latestDocumentApproved,
         {
             handleClick(it)
         }) {
-        override fun layoutId(position: Int, obj: DocumentModel): Int = R.layout.item_document
+        override fun layoutId(position: Int, obj: Data): Int = R.layout.item_document
 
         override fun viewHolder(view: View, viewType: Int): RecyclerView.ViewHolder =
             LatestApprovedVH(view)
 
     }
-    private fun handleClick(data : DocumentModel){
+    private fun handleClick(data : Data?){
         val intent = Intent(context, DetailFileActivity::class.java)
         intent.putExtra("data", data)
         startActivity(intent)
     }
-    private val waitingDocList = mutableListOf<DocumentModel>()
+    private val waitingDocList = mutableListOf<Data>()
 
-    private val rvAdapter = object : RvAdapter<DocumentModel>(waitingDocList,
+    private val rvAdapter = object : RvAdapter<Data>(waitingDocList,
         {
             handleClick(it)
         }) {
-        override fun layoutId(position: Int, obj: DocumentModel): Int = R.layout.item_document_waiting_student
+        override fun layoutId(position: Int, obj: Data): Int = R.layout.item_document_waiting_student
 
         override fun viewHolder(view: View, viewType: Int): RecyclerView.ViewHolder =
             WaitingDocumentStudentVH(view)
@@ -100,8 +106,9 @@ class BerandaFragment : BaseFragment(R.layout.fragment_beranda), BerandaView {
             layoutManager = layManager
         }
 
-        presenter.getLatestApproved(FirebaseAuth.getInstance().currentUser!!.uid)
-        presenter.getWaiting(FirebaseAuth.getInstance().currentUser!!.uid)
+        //presenter.getLatestApproved(FirebaseAuth.getInstance().currentUser!!.uid)
+        //presenter.getWaiting(FirebaseAuth.getInstance().currentUser!!.uid)
+        presenter.getMyDocument(SharedPref(context!!).userEmail)
     }
 
     override fun onLoading(state: Boolean) {
@@ -120,15 +127,28 @@ class BerandaFragment : BaseFragment(R.layout.fragment_beranda), BerandaView {
     }
 
     override fun showResult(data: List<DocumentModel>) {
-        latestDocumentApproved.clear()
-        latestDocumentApproved.addAll(data)
-        adapterLatestApproved.notifyDataSetChanged()
+
     }
 
     override fun showResultWaiting(data: List<DocumentModel>) {
+
+    }
+
+    override fun showData(data: List<Data>?) {
+        if(!data.isNullOrEmpty()){
+            myDocuments.clear()
+            myDocuments.addAll(data)
+            mapper()
+        }
+    }
+    private fun mapper(){
+        latestDocumentApproved.clear()
         waitingDocList.clear()
-        waitingDocList.addAll(data)
+        myDocuments.sortByDescending { it.timestamp?.toLong() }
+        latestDocumentApproved.addAll(myDocuments.filter { it.valid=="2" })
+        waitingDocList.addAll(myDocuments.filter { it.valid=="1" })
         rvAdapter.notifyDataSetChanged()
+        adapterLatestApproved.notifyDataSetChanged()
     }
 
 }

@@ -65,17 +65,18 @@ class VerifyOtpPresenter(private val userRepository: UserRepository
             }
         }
     }
-    fun doVerify(filename: String,id:String) {
+    fun generateSignature(filename: String,email:String) {
         view.onLoading(true)
         launch {
             try {
-                val resVerif = withContext(Dispatchers.IO) { uploadRepository.verifyFile(filename) }
+                val resVerif = withContext(Dispatchers.IO) {
+                    uploadRepository.generateSignature(filename,email) }
                 if (resVerif.status!!) {
                     logE("ress ${resVerif.message.toString()}")
-                    updateFireStore(resVerif,id)
+                    view.showResult(resVerif)
                 }
             } catch (t: Throwable) {
-                view.onError(t.localizedMessage)
+                //view.onError(t.localizedMessage)
                 logE(t.localizedMessage)
             }
         }

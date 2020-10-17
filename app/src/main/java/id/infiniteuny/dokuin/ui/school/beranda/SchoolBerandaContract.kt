@@ -2,56 +2,28 @@ package id.infiniteuny.dokuin.ui.school.beranda
 
 import com.google.firebase.firestore.FirebaseFirestore
 import id.infiniteuny.dokuin.base.BasePresenter
+import id.infiniteuny.dokuin.data.model.Data
 import id.infiniteuny.dokuin.data.model.DocumentModel
+import id.infiniteuny.dokuin.data.repository.UploadRepository
+import id.infiniteuny.dokuin.util.logE
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class SchoolBerandaPresenter(private val view: SchoolBerandaView) : BasePresenter() {
-    private val db = FirebaseFirestore.getInstance()
-
-    fun getLatest(uid: String) {
+class SchoolBerandaPresenter(private val repository: UploadRepository ,private val view: SchoolBerandaView) : BasePresenter() {
+    fun getMyDocument(email:String){
         view.onLoading(true)
-        db.collection("documents")
-            .whereEqualTo("schoolId", uid)
-            .get()
-            .addOnSuccessListener {
-                if (!it.isEmpty) {
-                    val data = mutableListOf<DocumentModel>()
-                    it.forEach { snap ->
-                        data.add(snap.toObject(DocumentModel::class.java).withId(snap.id))
-                    }
-                    view.showResult(data)
-                } else {
-                    view.showResult(listOf())
-                }
+        launch {
+            try {
+                val result = withContext(Dispatchers.IO){ repository.getMyFileSignator(email)}
+                view.showData(result.data)
+                view.onLoading(false)
+            }catch (throwable:Throwable){
+                logE(throwable.localizedMessage)
+                view.onError(throwable.localizedMessage)
                 view.onLoading(false)
             }
-            .addOnFailureListener {
-                view.onLoading(false)
-                view.onError(it.localizedMessage)
-            }
-    }
-
-    fun getWaiting(uid: String) {
-        view.onLoading(true)
-        db.collection("documents")
-            .whereEqualTo("schoolId", uid)
-            .whereEqualTo("status", "waiting")
-            .get()
-            .addOnSuccessListener {
-                if (!it.isEmpty) {
-                    val data = mutableListOf<DocumentModel>()
-                    it.forEach { snap ->
-                        data.add(snap.toObject(DocumentModel::class.java).withId(snap.id))
-                    }
-                    view.showResultWaiting(data)
-                } else {
-                    view.showResultWaiting(listOf())
-                }
-                view.onLoading(false)
-            }
-            .addOnFailureListener {
-                view.onLoading(false)
-                view.onError(it.localizedMessage)
-            }
+        }
     }
 }
 
@@ -60,5 +32,6 @@ interface SchoolBerandaView {
     fun onError(msg: String)
     fun showResult(data: List<DocumentModel>)
     fun showResultWaiting(data: List<DocumentModel>)
+    fun showData(data:List<Data>?)
 }
 

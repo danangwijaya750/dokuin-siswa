@@ -34,19 +34,26 @@ class DetailFilePresenter(
         }
     }
 
-     fun doVerify(filename: String,id:String) {
+     fun doGenerateSignature(filename: String,email: String) {
         view.onLoading(true)
         launch {
             try {
-                val resVerif = withContext(Dispatchers.IO) { repository.verifyFile(filename) }
+                val resVerif = withContext(Dispatchers.IO) {
+                    repository.generateSignature(filename,email) }
                 if (resVerif.status!!) {
                     logE("ress ${resVerif.message.toString()}")
-                    updateFireStore(resVerif,id)
+
                 }
             } catch (t: Throwable) {
                 view.onError(t.localizedMessage)
                 logE(t.localizedMessage)
             }
+        }
+    }
+    fun getDocumentHistory(docId:String){
+        view.onLoading(true)
+        launch {
+            
         }
     }
     private fun updateFireStore(data:VerifyResponse,id: String){
@@ -63,6 +70,21 @@ class DetailFilePresenter(
             .addOnFailureListener {
                 view.onError(it.localizedMessage)
             }
+    }
+    fun submitAction(filename: String,fullname:String,action:String){
+        //view.onLoading(true)
+        launch {
+            try {
+                val resVerif = withContext(Dispatchers.IO) {
+                    repository.submitAction(filename,fullname,action) }
+                if (resVerif.success!!) {
+                    logE("ress ${resVerif.message.toString()}")
+                }
+            } catch (t: Throwable) {
+                view.onError(t.localizedMessage)
+                logE(t.localizedMessage)
+            }
+        }
     }
 }
 

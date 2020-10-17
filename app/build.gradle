@@ -75,5 +75,8 @@ dependencies {
     //pin edit
     implementation 'com.poovam:pin-edittext-field:1.2.3'
 
+    //qrscanner
+    implementation 'com.github.blikoon:QRCodeScanner:0.1.2'
+
 
 }

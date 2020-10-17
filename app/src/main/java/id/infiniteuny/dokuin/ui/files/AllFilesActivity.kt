@@ -13,20 +13,26 @@ import id.infiniteuny.dokuin.R
 import id.infiniteuny.dokuin.base.BaseActivity
 import id.infiniteuny.dokuin.base.RvAdapter
 import id.infiniteuny.dokuin.data.local.SharedPref
+import id.infiniteuny.dokuin.data.model.Data
 import id.infiniteuny.dokuin.data.model.DocumentModel
 import id.infiniteuny.dokuin.ui.detail.DetailFileActivity
 import id.infiniteuny.dokuin.util.logE
 import id.infiniteuny.dokuin.util.toast
 import kotlinx.android.synthetic.main.activity_all_files.*
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
-class AllFilesActivity : BaseActivity(R.layout.activity_all_files) {
+class AllFilesActivity : BaseActivity(R.layout.activity_all_files),AllFilesView {
     private val db=FirebaseFirestore.getInstance()
 
-    private val documentList= mutableListOf<DocumentModel>()
-    private val rvAdapter=object:RvAdapter<DocumentModel>(documentList,{
+    private val documentList= mutableListOf<Data>()
+    private val presenter by inject<AllFilesPresenter> {
+        parametersOf(this)
+    }
+    private val rvAdapter=object:RvAdapter<Data>(documentList,{
      handleClick(it)
     }){
-        override fun layoutId(position: Int, obj: DocumentModel): Int = R.layout.item_document_detail
+        override fun layoutId(position: Int, obj: Data): Int = R.layout.item_document_detail
 
         override fun viewHolder(view: View, viewType: Int): RecyclerView.ViewHolder =AllFilesVH(view)
     }
@@ -39,25 +45,31 @@ class AllFilesActivity : BaseActivity(R.layout.activity_all_files) {
             layMan.orientation=LinearLayoutManager.VERTICAL
             layoutManager=layMan
         }
-        getPopulateData()
         iv_back.setOnClickListener {
             onBackPressed()
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        getPopulateData()
+    }
+
     private fun getPopulateData(){
         when(SharedPref(this).userRole){
             "student"->{
-               getStudentFiles()
+               presenter.getMyFiles(SharedPref(this).userEmail)
             }
             "school"->{
-                getSchoolFiles()
+                presenter.getMyFilesSignator(SharedPref(this).userEmail)
             }
-            "instansi"->{}
+            "instansi"->{
+
+            }
         }
     }
 
-    private fun handleClick(data : DocumentModel){
+    private fun handleClick(data: Data){
             val intent = Intent(this, DetailFileActivity::class.java)
             intent.putExtra("data", data)
             startActivity(intent)
@@ -71,7 +83,7 @@ class AllFilesActivity : BaseActivity(R.layout.activity_all_files) {
             .addOnSuccessListener {
                 if(!it.isEmpty){
                     it.forEach {snap->
-                        documentList.add(snap.toObject(DocumentModel::class.java).withId(snap.id))
+                        //documentList.add(snap.toObject(DocumentModel::class.java).withId(snap.id))
                     }
                     rvAdapter.notifyDataSetChanged()
                 }
@@ -89,7 +101,7 @@ class AllFilesActivity : BaseActivity(R.layout.activity_all_files) {
             .addOnSuccessListener {
                 if(!it.isEmpty){
                     it.forEach {snap->
-                        documentList.add(snap.toObject(DocumentModel::class.java).withId(snap.id))
+                        //documentList.add(snap.toObject(DocumentModel::class.java).withId(snap.id))
                     }
                     rvAdapter.notifyDataSetChanged()
                 }
@@ -103,6 +115,23 @@ class AllFilesActivity : BaseActivity(R.layout.activity_all_files) {
     override fun onBackPressed() {
         super.onBackPressed()
         finish()
+    }
+
+    override fun onLoading(state: Boolean) {
+
+    }
+
+    override fun onError(msg: String) {
+
+    }
+
+    override fun showData(data: List<Data>?) {
+        logE(data?.size.toString())
+       if(!data.isNullOrEmpty()){
+           documentList.clear()
+           documentList.addAll(data)
+           rvAdapter.notifyDataSetChanged()
+       }
     }
 
 

@@ -27,6 +27,7 @@ class UploadFileActivity : BaseActivity(R.layout.activity_upload_file), UploadFi
     private val presenter by inject<UploadFilePresenter> {
         parametersOf(this)
     }
+    private val mustApprovedBy = mutableListOf<String>()
 
     companion object {
         private const val PICK_FILE = 101
@@ -46,8 +47,24 @@ class UploadFileActivity : BaseActivity(R.layout.activity_upload_file), UploadFi
         }
 
         btn_upload.setOnClickListener {
-            if (path!!.isNotEmpty()) {
+            if (path!!.isNotEmpty()&& mustApprovedBy.size>0) {
                 doUpload()
+            }
+        }
+        cb_kepsek.setOnCheckedChangeListener { buttonView, isChecked ->
+            if(isChecked){
+                mustApprovedBy.add("kepsek@stembayo.id")
+            }
+            else{
+                mustApprovedBy.remove("kepsek@stembayo.id")
+            }
+        }
+        cb_kesiswaan.setOnCheckedChangeListener { buttonView, isChecked ->
+            if(isChecked){
+                mustApprovedBy.add("kesiswaan@stembayo.id")
+            }
+            else{
+                mustApprovedBy.remove("kesiswaan@stembayo.id")
             }
         }
     }
@@ -59,13 +76,38 @@ class UploadFileActivity : BaseActivity(R.layout.activity_upload_file), UploadFi
 
     private fun doUpload() {
         val role = SharedPref(this).userRole
+        val email= SharedPref(this).userEmail
+        var signator1=""
+        var signator2=""
+        if(cb_kepsek.isChecked){signator1="kepsek@stembayo.id"}
+        if(cb_kesiswaan.isChecked){signator2="kesiswaan@stembayo.id"}
         if (et_filename.text.toString().isNotEmpty()) {
-            presenter.doUploadFile(
-                FirebaseAuth.getInstance().uid!!,
-                "${et_filename.text}.pdf",
-                File(path),
-                role
-            )
+            if(signator1.isNotEmpty() && signator2.isNotEmpty()){
+                presenter.doUploadFile(
+                    signator1,
+                    signator2,
+                    email,
+                    "${et_filename.text}.pdf",
+                    File(path),
+                    role
+                )
+            }else if(signator1.isNotEmpty()&&signator2.isEmpty()){
+                presenter.doUploadFile(
+                    signator1,
+                    email,
+                    "${et_filename.text}.pdf",
+                    File(path),
+                    role
+                )
+            }else if(signator1.isEmpty()&&signator2.isNotEmpty()) {
+                presenter.doUploadFileSignator2(
+                    signator2,
+                    email,
+                    "${et_filename.text}.pdf",
+                    File(path),
+                    role
+                )
+            }
         }
     }
 

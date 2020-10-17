@@ -35,6 +35,6 @@ object BigBoxService {
     fun createService():WebServiceBigBox{
         return createRetorfit().create(WebServiceBigBox::class.java)
     }
-    const val BASE_URL="http://bnpb.divistant.com:3000/document/"
+    const val BASE_URL="http://34.123.104.234:5000/"
     const val BIG_BOX_URL="https://api.thebigbox.id/"
 }

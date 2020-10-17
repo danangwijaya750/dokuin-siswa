@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import id.infiniteuny.dokuin.R
 import id.infiniteuny.dokuin.base.BaseActivity
+import id.infiniteuny.dokuin.data.local.SharedPref
+import id.infiniteuny.dokuin.data.model.Data
 import id.infiniteuny.dokuin.data.model.DocumentModel
 import id.infiniteuny.dokuin.data.model.VerifyResponse
 import id.infiniteuny.dokuin.ui.login.LoginActivity
@@ -31,7 +33,9 @@ class VerifyOtpActivity : BaseActivity(R.layout.activity_verify_otp),VerifyOtpVi
             }else{
                 val email=intent.getStringExtra("email")
                 //val passw=intent.getStringExtra("password")
-                presenter.verifOtpDoc(email,et_otp.text.toString(),"","")
+                //presenter.verifOtpDoc(email,et_otp.text.toString(),"","")
+                val data = intent.extras?.get("data-doc") as Data
+                presenter.generateSignature(data.fileName!!,SharedPref(this).userEmail)
             }
         }
     }
@@ -51,8 +55,8 @@ class VerifyOtpActivity : BaseActivity(R.layout.activity_verify_otp),VerifyOtpVi
     }
 
     override fun verifDoc() {
-        val data = intent.extras?.get("data-doc") as DocumentModel
-        presenter.doVerify(data.title,data.id)
+        val data = intent.extras?.get("data-doc") as Data
+        presenter.generateSignature(data.fileName!!,SharedPref(this).userEmail)
     }
 
     override fun showResult(data: VerifyResponse) {
