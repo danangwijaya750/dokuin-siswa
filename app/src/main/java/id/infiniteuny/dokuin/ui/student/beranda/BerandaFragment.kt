@@ -69,6 +69,7 @@ class BerandaFragment : BaseFragment(R.layout.fragment_beranda), BerandaView {
         user_profile.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
             startActivity(Intent(requireContext(), LoginActivity::class.java))
+            SharedPref(requireContext()).userEmail = ""
             activity?.finish()
         }
 

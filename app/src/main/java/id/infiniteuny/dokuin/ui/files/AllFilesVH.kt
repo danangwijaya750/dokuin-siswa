@@ -5,8 +5,6 @@ import androidx.recyclerview.widget.RecyclerView
 import id.infiniteuny.dokuin.R
 import id.infiniteuny.dokuin.base.RvAdapter
 import id.infiniteuny.dokuin.data.model.Data
-import id.infiniteuny.dokuin.data.model.DocumentModel
-import id.infiniteuny.dokuin.data.model.UserModel
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_document_detail.*
 import java.text.SimpleDateFormat
@@ -18,7 +16,7 @@ class AllFilesVH (override val containerView: View): RecyclerView.ViewHolder(con
 
     override fun bindData(data: Data, listen: (Data) -> Unit, position: Int) {
         tv_doc_title.text=data.fileTitle
-        val date = Date(data.timestamp!!.toLong())
+        val date = Date(data.timestamp!!.toLong() * 1000)
         val format = SimpleDateFormat("dd-MM-yyyy HH:mm")
         tv_doc_date.text=format.format(date)
         when(data.valid){

@@ -5,13 +5,11 @@ import android.os.Bundle
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
-import android.widget.EditText
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.auth.User
 import id.infiniteuny.dokuin.R
 import id.infiniteuny.dokuin.base.BaseActivity
 import id.infiniteuny.dokuin.base.RvAdapter
@@ -47,6 +45,7 @@ class InstansiMainActivity : BaseActivity(R.layout.activity_instansi_main) {
         user_profile_instansi.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
             startActivity(Intent(this, LoginActivity::class.java))
+            SharedPref(this).userEmail = ""
             finish()
         }
         tv_user_name.text = getString(R.string.greeting, SharedPref(this).userName)
